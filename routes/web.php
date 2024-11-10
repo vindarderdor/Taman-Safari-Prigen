@@ -9,6 +9,14 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserActivityController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\GempaController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\testcontroller;
+use App\Http\Controllers\ContentController                          ;
 
 Route::get('/', function () {
     return view('guest');
@@ -23,14 +31,18 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard2', [AuthController::class, 'dashboard2'])->name('dashboard2');
 
     Route::get('/users', [ManagementController::class, 'indexUser'])->name('management.users.index');
     Route::get('/users/create', [ManagementController::class, 'createUser'])->name('management.users.create');
     Route::post('/users/store', [ManagementController::class, 'storeUser'])->name('management.users.store');
     Route::get('/users/edit/{id}', [ManagementController::class, 'editUser'])->name('management.users.edit');
-    Route::put('/users/update/{id}', [ManagementController::class, 'updateUser'])->name('management.users.update');
+    Route::post('/users/update/{id}', [ManagementController::class, 'updateUser'])->name('management.users.update');
     Route::delete('/users/delete/{id}', [ManagementController::class, 'deleteUser'])->name('management.users.delete');
+
+    Route::get('/userdatatables', [testcontroller::class, 'index'])->name('users.index');
+    Route::get('/userdatatables/data', [testcontroller::class, 'getUsersData'])->name('users.data');
 
     // Roles routes
     Route::get('/roles', [ManagementController::class, 'indexRole'])->name('management.roles.index');
@@ -39,8 +51,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/roles/{id}/edit', [ManagementController::class, 'editRole'])->name('management.roles.edit');
     Route::post('/roles/{id}/update', [ManagementController::class, 'updateRole'])->name('management.roles.update');
     Route::delete('/roles/{id}', [ManagementController::class, 'deleteRole'])->name('management.roles.delete');
-
-
 
     // Menus routes
     Route::get('/menus', [ManagementController::class, 'indexMenu'])->name('management.menus.index');
@@ -58,10 +68,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/submenus/{id}/update', [ManagementController::class, 'updatesubmenu'])->name('management.submenus.update');
     Route::delete('/submenus/{id}', [ManagementController::class, 'deletesubmenu'])->name('management.submenus.delete');
 
-    // Akses menu
-    // Route::get('/roles/{id}/edit-menu', [ManagementController::class, 'editRoleMenu'])->name('management.roles.edit-menu');
-    // Route::post('/roles/{id}/update-menu', [ManagementController::class, 'updateRoleMenu'])->name('management.roles.update-menu');
-
     //setting
     Route::get('/settings', [ManagementController::class, 'indexsetting'])->name('management.settings.index');
     Route::get('/settings/create', [ManagementController::class, 'createsetting'])->name('management.settings.create');
@@ -70,7 +76,29 @@ Route::middleware(['auth'])->group(function () {
 
     //cuaca
     Route::get('/cuaca/{kode_wilayah}', [CuacaController::class, 'show'])->name('cuaca.show');
-});
 
-Route::resource('kategoris', KategoriController::class);
-Route::resource('bukus', BukuController::class);
+    //posts
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::post('/posts/{post}/like', [LikeController::class, 'toggle'])->name('posts.like');
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+
+    //message
+    Route::get('/messages/compose', [MessageController::class, 'compose'])->name('messages.compose');
+    Route::post('/messages/send', [MessageController::class, 'send'])->name('messages.send');
+    Route::get('/messages/inbox', [MessageController::class, 'inbox'])->name('messages.inbox');
+    Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
+    Route::get('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
+
+    Route::resource('kategoris', KategoriController::class);
+    Route::resource('bukus', BukuController::class);
+    Route::resource('profile', ProfileController::class);
+    Route::get('/gempa', [GempaController::class, 'getEarthquakeInfo']);
+    Route::get('/cuaca', [CuacaController::class, 'getWeatherInfo']);
+    Route::get('/download-transaction-report', [AuthController::class, 'downloadTransactionReport'])
+    ->name('download-transaction-report');
+    // routes/web.php
+    Route::post('/download-stock', [AuthController::class, 'downloadStock'])->name('download.stock');
+
+    Route::resource('content', ContentController::class);
+
+});

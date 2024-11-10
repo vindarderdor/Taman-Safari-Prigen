@@ -9,15 +9,8 @@ use App\Models\Menu;
 class ManagementController extends Controller
 {
     // 1. Menampilkan Semua Users
-    public function indexUser()
+    public function indexUser(Request $request)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         $users = DB::table('users')
             ->join('JENIS_USER', 'users.ID_JENIS_USER', '=', 'JENIS_USER.ID_JENIS_USER')
             ->select('users.*', 'JENIS_USER.JENIS_USER')
@@ -25,10 +18,14 @@ class ManagementController extends Controller
             ->get();
         $roles = DB::table('JENIS_USER')->get();
 
-        return view('management.users.index', ['users' => $users, 'setting_menu_user' => $setting_menu_user, 'roles' => $roles]);
-    }
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('management.users.index_content', compact('users'))->render()
+            ]);
+        }
 
-    // 2. Form untuk Membuat User Baru
+        return view('management.users.index', compact('users', 'roles'));
+    }
     public function createUser()
     {
         $userRoleId = auth()->user()->ID_JENIS_USER;
@@ -42,7 +39,6 @@ class ManagementController extends Controller
         return view('management.users.create', ['roles' => $roles, 'setting_menu_user' => $setting_menu_user]);
     }
 
-    // 3. Menyimpan User Baru
     public function storeUser(Request $request)
     {
         $id = DB::table('users')->insertGetId([
@@ -56,25 +52,25 @@ class ManagementController extends Controller
             'DELETE_MARK' => '0'
         ]);
 
-        return redirect()->route('dashboard')->with('success', 'User berhasil ditambahkan.');
+        if ($request->ajax()) {
+            return response()->json(['message' => 'User added successfully']);
+        }
+
+        return redirect()->route('management.users.index')->with('success', 'User berhasil ditambahkan.');
     }
 
-    // 4. Edit User
     public function editUser($id)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         $user = DB::table('users')->where('ID_USER', $id)->first();
+
+        if (request()->ajax()) {
+            return response()->json($user);
+        }
+
         $roles = DB::table('JENIS_USER')->get();
-        return view('management.users.edit', ['user' => $user, 'roles' => $roles, 'setting_menu_user' => $setting_menu_user]);
+        return view('management.users.edit', ['user' => $user, 'roles' => $roles]);
     }
 
-    // 5. Update User
     public function updateUser(Request $request, $id)
     {
         DB::table('users')
@@ -84,47 +80,46 @@ class ManagementController extends Controller
                 'USERNAME' => $request->input('username'),
                 'EMAIL' => $request->input('email'),
                 'ID_JENIS_USER' => $request->input('role'),
-                'CREATE_BY' => auth()->user()->USERNAME,
+                'UPDATE_BY' => auth()->user()->USERNAME,
                 'UPDATE_DATE' => now()
             ]);
 
-        return redirect()->route('dashboard')->with('success', 'User berhasil diUpdate.');
+        if ($request->ajax()) {
+            return response()->json(['message' => 'User updated successfully']);
+        }
+
+        return redirect()->route('management.users.index')->with('success', 'User berhasil diupdate.');
     }
 
-    // 6. Delete User
     public function deleteUser($id)
     {
         DB::table('users')
             ->where('ID_USER', $id)
             ->update(['DELETE_MARK' => '1']);
 
-        return redirect()->route('dashboard')->with('success', 'User berhasil dihapus.');
+        if (request()->ajax()) {
+            return response()->json(['message' => 'User deleted successfully']);
+        }
+
+        return redirect()->route('management.users.index')->with('success', 'User berhasil dihapus.');
     }
 
     // --- Role Management (Jenis User) ---
-    public function indexRole()
+    public function indexRole(Request $request)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
+
         $roles = DB::table('JENIS_USER')->where('DELETE_MARK', '!=', '1')->get();
-        return view('management.roles.index', ['roles' => $roles, 'setting_menu_user' => $setting_menu_user]);
+
+        if ($request->ajax()) {
+            return view('management.roles.index_content', compact('roles'));
+        }
+
+        return view('management.roles.index', compact('roles'));
     }
 
     public function createRole()
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
-        return view('management.roles.create', ['setting_menu_user' => $setting_menu_user]);
+        return view('management.roles.create', []);
     }
 
     public function storeRole(Request $request)
@@ -140,20 +135,13 @@ class ManagementController extends Controller
     }
     public function editRole($id)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         $role = DB::table('JENIS_USER')->where('ID_JENIS_USER', $id)->first();
 
         if (!$role) {
             return redirect()->route('dashboard')->with('error', 'Role not found.');
         }
 
-        return view('management.roles.edit', ['role' => $role, 'setting_menu_user' => $setting_menu_user]);
+        return view('management.roles.edit', ['role' => $role, ]);
     }
 
     public function updateRole(Request $request, $id)
@@ -187,29 +175,21 @@ class ManagementController extends Controller
 
 
     // --- Menu Management ---
-    public function indexMenu()
+    public function indexMenu(Request $request)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
+
         $menus = DB::table('MENU')->where('DELETE_MARK', '!=', '1')->get();
-        return view('management.menus.index', ['menus' => $menus, 'setting_menu_user' => $setting_menu_user]);
+
+        if ($request->ajax()) {
+            return view('management.menus.index_content', compact('menus'));
+        }
+
+        return view('management.menus.index', compact('menus'));
     }
 
     public function createMenu()
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
-        return view('management.menus.create', ['setting_menu_user' => $setting_menu_user]);
+        return view('management.menus.create', []);
     }
 
     public function storeMenu(Request $request)
@@ -227,13 +207,6 @@ class ManagementController extends Controller
     }
     public function editmenu($id)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         // Ambil data menu berdasarkan ID
         $menu = DB::table('MENU')->where('ID_MENU', $id)->first();
 
@@ -243,7 +216,7 @@ class ManagementController extends Controller
         }
 
         // Tampilkan halaman edit dengan data menu
-        return view('management.menus.edit', ['setting_menu_user' => $setting_menu_user, 'menu' => $menu]);
+        return view('management.menus.edit', ['menu' => $menu]);
     }
 
     public function updatemenu(Request $request, $id)
@@ -283,29 +256,19 @@ class ManagementController extends Controller
         return redirect()->route('dashboard')->with('success', 'Menu berhasil dihapus.');
     }
     // --- SubMenu Management ---
-    public function indexsubMenu()
+    public function indexsubMenu(Request $request)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         $submenus = DB::table('MENU_LEVEL')->where('DELETE_MARK', '!=', '1')->get();
-        return view('management.submenus.index', ['submenus' => $submenus, 'setting_menu_user' => $setting_menu_user]);
+
+        if ($request->ajax()) {
+            return view('management.submenus.index_content', compact('submenus'));
+        }
+        return view('management.submenus.index', ['submenus' => $submenus, ]);
     }
 
     public function createsubMenu()
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
-        return view('management.submenus.create', ['setting_menu_user' => $setting_menu_user]);
+        return view('management.submenus.create', []);
     }
 
     public function storesubMenu(Request $request)
@@ -323,13 +286,6 @@ class ManagementController extends Controller
     }
     public function editsubmenu($id)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         // Ambil data menu berdasarkan ID
         $submenu = DB::table('MENU_LEVEL')->where('ID_LEVEL', $id)->first();
 
@@ -339,7 +295,7 @@ class ManagementController extends Controller
         }
 
         // Tampilkan halaman edit dengan data menu
-        return view('management.submenus.edit', ['setting_menu_user' => $setting_menu_user, 'submenu' => $submenu]);
+        return view('management.submenus.edit', ['submenu' => $submenu]);
     }
 
     public function updatesubmenu(Request $request, $id)
@@ -380,42 +336,31 @@ class ManagementController extends Controller
         return redirect()->route('dashboard')->with('success', 'Menu berhasil dihapus.');
     }
 
-    public function indexsetting()
+    public function indexsetting(Request $request)
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
-        // Query untuk mengambil data dari tabel SETTING_MENU_USER
-        $settings = DB::table('SETTING_MENU_USER')
-        ->join('JENIS_USER', 'SETTING_MENU_USER.ID_JENIS_USER', '=', 'JENIS_USER.ID_JENIS_USER')
-        ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-        ->where('SETTING_MENU_USER.DELETE_MARK', '0') // Hanya ambil data yang tidak dihapus
-        ->select('SETTING_MENU_USER.NO_SETTING', 'JENIS_USER.JENIS_USER', 'MENU.MENU_NAME')
-        ->get();
 
-        return view('management.settings.index', ['setting_menu_user' => $setting_menu_user, 'settings' => $settings]);
+        $settings = DB::table('SETTING_MENU_USER')
+            ->join('JENIS_USER', 'SETTING_MENU_USER.ID_JENIS_USER', '=', 'JENIS_USER.ID_JENIS_USER')
+            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
+            ->where('SETTING_MENU_USER.DELETE_MARK', '0')
+            ->select('SETTING_MENU_USER.NO_SETTING', 'JENIS_USER.JENIS_USER', 'MENU.MENU_NAME')
+            ->get();
+
+        if ($request->ajax()) {
+            return view('management.settings.index_content', compact('settings'));
+        }
+
+        return view('management.settings.index', compact('settings'));
     }
 
     // Create: Menampilkan form untuk membuat setting baru
     public function createsetting()
     {
-        $userRoleId = auth()->user()->ID_JENIS_USER;
-        $setting_menu_user = DB::table('SETTING_MENU_USER')
-            ->join('MENU', 'SETTING_MENU_USER.MENU_ID', '=', 'MENU.ID_MENU')
-            ->where('SETTING_MENU_USER.ID_JENIS_USER', $userRoleId)
-            ->where('MENU.DELETE_MARK', '!=', '1')
-            ->select('MENU.MENU_NAME', 'MENU.MENU_LINK', 'MENU.MENU_ICON', 'SETTING_MENU_USER.ID_JENIS_USER')
-            ->get();
         // Ambil data jenis user dan menu untuk digunakan dalam select options
         $roles = DB::table('JENIS_USER')->get();
         $menus = DB::table('MENU')->get();
 
         return view('management.settings.create', [
-            'setting_menu_user' => $setting_menu_user,
             'roles' => $roles,
             'menus' => $menus,
         ]);

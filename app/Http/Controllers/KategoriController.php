@@ -43,7 +43,7 @@ class KategoriController extends Controller
 
         Kategori::create($request->all());
 
-        return view('layouts.main');
+        return redirect()->route('kategoris.index')->with('success', 'Role berhasil ditambahkan.');
     }
     public function edit(kategori $kategori)
     {

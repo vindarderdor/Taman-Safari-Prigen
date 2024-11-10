@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             // ChildMenuSeeder::class,
             // ParentMenuSeeder::class,
-            SettingMenuUserSeeder::class,
+            // SettingMenuUserSeeder::class,
         ]);
     }
 }

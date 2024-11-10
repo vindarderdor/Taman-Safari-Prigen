@@ -63,4 +63,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(JenisUser::class, 'ID_JENIS_USER', 'ID_JENIS_USER');
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'SENDER', 'ID_USER');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'USER_ID', 'ID_USER');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'USER_ID', 'ID_USER');
+    }
 }
