@@ -11,11 +11,11 @@
 <link
   rel="shortcut icon"
   type="image/png"
-  href="{{ asset('') }}landing/assets/images/logos/favicon.png"
+  href="{{ asset('') }}assets/images/logos/favicon.png"
 />
 
 <!-- Core Css -->
-<link rel="stylesheet" href="{{ asset('') }}landing/assets/css/styles.css" />
+<link rel="stylesheet" href="{{ asset('') }}assets/css/styles.css" />
 
   <title>Spike Bootstrap Admin</title>
 </head>
@@ -23,7 +23,7 @@
 <body>
   <!-- Preloader -->
   <div class="preloader">
-    <img src="{{ asset('') }}landing/assets/images/logos/loader.svg" alt="loader" class="lds-ripple img-fluid" />
+    <img src="{{ asset('') }}assets/images/logos/loader.svg" alt="loader" class="lds-ripple img-fluid" />
   </div>
   <div id="main-wrapper">
     <!-- Sidebar Start -->
@@ -74,7 +74,7 @@
               <a href="/bukus"
                 class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                 <div class="bg-light-subtle rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                  <img src="{{ asset('/landing/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
+                  <img src="{{ asset('/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
                 </div>
                 <div class="d-inline-block">
                   <h6 class="mb-1 fw-semibold bg-hover-primary">Buku</h6>
@@ -84,7 +84,7 @@
               <a href="/kategoris"
                 class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                 <div class="bg-light-subtle rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                  <img src="{{ asset('/landing/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
+                  <img src="{{ asset('/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
                 </div>
                 <div class="d-inline-block">
                   <h6 class="mb-1 fw-semibold bg-hover-primary">Kategori</h6>
@@ -95,7 +95,7 @@
               <a href="/cuaca"
                 class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                 <div class="bg-light-subtle rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                  <img src="{{ asset('/landing/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
+                  <img src="{{ asset('/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
                 </div>
                 <div class="d-inline-block">
                   <h6 class="mb-1 fw-semibold bg-hover-primary">Cuaca</h6>
@@ -105,7 +105,7 @@
               <a href="/gempa"
                 class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                 <div class="bg-light-subtle rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                  <img src="{{ asset('/landing/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
+                  <img src="{{ asset('/assets/images/svgs/icon-dd-application.svg') }}" alt="" class="img-fluid" width="24" height="24">
                 </div>
                 <div class="d-inline-block">
                   <h6 class="mb-1 fw-semibold bg-hover-primary">Gempa</h6>
@@ -1663,19 +1663,19 @@ aria-labelledby="offcanvasExampleLabel">
   {{-- </div> --}}
   <div class="dark-transparent sidebartoggler"></div>
 </div>
-<script src="{{ asset('') }}landing/assets/js/vendor.min.js"></script>
+<script src="{{ asset('') }}assets/js/vendor.min.js"></script>
 <!-- Import Js Files -->
-<script src="{{ asset('') }}landing/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('') }}landing/assets/libs/simplebar/dist/simplebar.min.js"></script>
-<script src="{{ asset('') }}landing/assets/js/theme/app.dark.init.js"></script>
-<script src="{{ asset('') }}landing/assets/js/theme/theme.js"></script>
-<script src="{{ asset('') }}landing/assets/js/theme/app.min.js"></script>
-<script src="{{ asset('') }}landing/assets/js/theme/sidebarmenu.js"></script>
-<script src="{{ asset('') }}landing/assets/js/theme/feather.min.js"></script>
+<script src="{{ asset('') }}assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('') }}assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="{{ asset('') }}assets/js/theme/app.dark.init.js"></script>
+<script src="{{ asset('') }}assets/js/theme/theme.js"></script>
+<script src="{{ asset('') }}assets/js/theme/app.min.js"></script>
+<script src="{{ asset('') }}assets/js/theme/sidebarmenu.js"></script>
+<script src="{{ asset('') }}assets/js/theme/feather.min.js"></script>
 
 <!-- solar icons -->
 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-<script src="{{ asset('') }}landing/assets/js/apps/chat.js"></script>
+<script src="{{ asset('') }}assets/js/apps/chat.js"></script>
 </body>
 
 </html>
