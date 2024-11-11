@@ -16,14 +16,14 @@
   </div>
             <div class="position-relative overflow-hidden">
               <div class="position-relative overflow-hidden rounded-3">
-                <img src="{{ asset('landing/assets/images/backgrounds/profilebg.jpg') }}" alt="" class="w-100">
+                <img src="{{ asset('assets/images/backgrounds/profilebg.jpg') }}" alt="" class="w-100">
               </div>
               <div class="card mx-9 mt-n5">
                 <div class="card-body pb-0">
                   <div class="d-md-flex align-items-center justify-content-between text-center text-md-start">
                     <div class="d-md-flex align-items-center">
                       <div class="rounded-circle position-relative mb-9 mb-md-0 d-inline-block">
-                        <img src="{{ asset('landing/assets/images/profile/user-1.jpg') }}" alt="" class="img-fluid rounded-circle"
+                        <img src="{{ asset('assets/images/profile/user-1.jpg') }}" alt="" class="img-fluid rounded-circle"
                           width="100" height="100">
                         <span
                           class="text-bg-primary rounded-circle text-white d-flex align-items-center justify-content-center position-absolute bottom-0 end-0 p-1 border border-2 border-white"><i

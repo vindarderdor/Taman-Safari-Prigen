@@ -74,28 +74,10 @@ Route::get('/dashboard2', [AuthController::class, 'dashboard2'])->name('dashboar
     Route::post('/settings/store', [ManagementController::class, 'storesetting'])->name('management.settings.store');
     Route::delete('/settings/{id}', [ManagementController::class, 'deletesetting'])->name('management.settings.delete');
 
-    //cuaca
-    Route::get('/cuaca/{kode_wilayah}', [CuacaController::class, 'show'])->name('cuaca.show');
-
     //posts
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::post('/posts/{post}/like', [LikeController::class, 'toggle'])->name('posts.like');
     Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
-
-    //message
-    Route::get('/messages/compose', [MessageController::class, 'compose'])->name('messages.compose');
-    Route::post('/messages/send', [MessageController::class, 'send'])->name('messages.send');
-    Route::get('/messages/inbox', [MessageController::class, 'inbox'])->name('messages.inbox');
-    Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
-    Route::get('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
-
-    Route::resource('kategoris', KategoriController::class);
-    Route::resource('bukus', BukuController::class);
-    Route::resource('profile', ProfileController::class);
-    Route::get('/gempa', [GempaController::class, 'getEarthquakeInfo']);
-    Route::get('/cuaca', [CuacaController::class, 'getWeatherInfo']);
-    Route::get('/download-transaction-report', [AuthController::class, 'downloadTransactionReport'])
-    ->name('download-transaction-report');
     // routes/web.php
     Route::post('/download-stock', [AuthController::class, 'downloadStock'])->name('download.stock');
 

@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spike Free</title>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('/assets/images/logos/favicon.png') }}" />
-  <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
+  <link rel="shortcut icon" type="image/png" href="{{ asset('auth/assets/images/logos/favicon.png') }}" />
+  <link rel="stylesheet" href="{{ asset('auth/assets/css/styles.min.css') }}" />
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img src="{{ asset('/assets/images/logos/dark-logo.svg') }}" width="180" alt="">
+                  <img src="{{ asset('auth/assets/images/logos/dark-logo.svg') }}" width="180" alt="">
                 </a>
                 <p class="text-center">Your Social Campaigns</p>
                 @if ($errors->any())
@@ -56,8 +56,8 @@
       </div>
     </div>
   </div>
-  <script src="{{ asset('/assets/libs/jquery/dist/jquery.min.js') }}"></script>
-  <script src="{{ asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('auth/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('auth/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
