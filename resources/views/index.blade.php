@@ -1,546 +1,618 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Timed Cards Opening</title>
-  <link rel="stylesheet" href="{{ asset('landing1/assets/scss/app.css') }}">
+    <meta charset="utf-8">
+    <title>Zoofari - Zoo & Safari Park Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Quicksand:wght@600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('') }}landing/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('') }}landing/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="{{ asset('') }}landing/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('') }}landing/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ asset('') }}landing/css/style.css" rel="stylesheet">
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<body>
-    <div class="indicator"></div>
 
-    <nav>
-      <div>
-        <div class="svg-container">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
-            />
-          </svg>
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-        <div>Globe Express</div>
-      </div>
-      <div>
-        <div class="active">Home</div>
-        <div>Holidays</div>
-        <div>Destinations</div>
-        <div>Flights</div>
-        <div>Offers</div>
-        <div>
-          @if (auth()->user()->ID_JENIS_USER == 1)
-              <a
-              class="nav-link"
-              aria-current="page"
-              href="dashboard"
-              style="color:aliceblue"
-              >Dashboard Admin</a
-              >
-      @endif
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="svg-container">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
-          </svg>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand p-0">
+            <img class="img-fluid me-3" src="img/icon/icon-10.png" alt="Icon">
+            <h1 class="m-0 text-primary">Zoofari</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="service.html" class="nav-item nav-link">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                        <a href="animal.html" class="dropdown-item">Our Animals</a>
+                        <a href="membership.html" class="dropdown-item">Membership</a>
+                        <a href="visiting.html" class="dropdown-item">Visiting Hours</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary">Buy Ticket<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
-        <div class="svg-container">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </div>
-      </div>
     </nav>
+    <!-- Navbar End -->
 
-    <div id="demo"></div>
 
-    <div class="details" id="details-even">
-      <div class="place-box">
-        <div class="text">Switzerland Alps</div>
-      </div>
-      <div class="title-box-1"><div class="title-1">SAINT</div></div>
-      <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-      <div class="desc">
-        Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
-      </div>
-      <div class="cta">
-        <button class="bookmark">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </button>
-        <button class="discover">Discover Location</button>
-      </div>
-    </div>
-
-    <div class="details" id="details-odd">
-      <div class="place-box">
-        <div class="text">Switzerland Alps</div>
-      </div>
-      <div class="title-box-1"><div class="title-1">SAINT </div></div>
-      <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-      <div class="desc">
-        Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
-      </div>
-      <div class="cta">
-        <button class="bookmark">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </button>
-        <button class="discover">Discover Location</button>
-      </div>
-    </div>
-
-    <div class="pagination" id="pagination">
-      <div class="arrow arrow-left">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15.75 19.5L8.25 12l7.5-7.5"
-          />
-        </svg>
-      </div>
-      <div class="arrow arrow-right">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M8.25 4.5l7.5 7.5-7.5 7.5"
-          />
-        </svg>
-      </div>
-      <div class="progress-sub-container" >
-        <div class="progress-sub-background" >
-            <div class="progress-sub-foreground" ></div>
+    <!-- Header Start -->
+    <div class="container-fluid bg-dark p-0 mb-5">
+        <div class="row g-0 flex-column-reverse flex-lg-row">
+            <div class="col-lg-6 p-0 wow fadeIn" data-wow-delay="0.1s">
+                <div class="header-bg h-100 d-flex flex-column justify-content-center p-5">
+                    <h1 class="display-4 text-light mb-5">Enjoy Wonderful Day With Your Family</h1>
+                    <div class="d-flex align-items-center pt-4 animated slideInDown">
+                        <a href="" class="btn btn-primary py-sm-3 px-3 px-sm-5 me-5">Read More</a>
+                        <button type="button" class="btn-play" data-bs-toggle="modal"
+                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                            <span></span>
+                        </button>
+                        <h6 class="text-white m-0 ms-4 d-none d-sm-block">Watch Video</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="owl-carousel header-carousel">
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="img/carousel-3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="slide-numbers" id="slide-numbers"></div>
+    <!-- Header End -->
+
+
+    <!-- Video Modal Start -->
+    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                            allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="cover" ></div>
-   
-
-   
-  </body>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'></script>
-  {{-- <script src="{{ asset('landing1/assets/js/app.js') }}"></script> --}}
-  <script>
-    const data = [
-      {
-          place:'Switzerland Alps',
-          title:'SAINT',
-          title2:'ANTONIEN',
-          description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It\'s a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.',
-          image:'{{ asset('landing1/assets/images/taman-safari1.jpeg') }}'
-      },
-      {
-          place:'Japan Alps',
-          title:'NANGANO',
-          title2:'PREFECTURE',
-          description:'Nagano Prefecture, set within the majestic Japan Alps, is a cultural treasure trove with its historic shrines and temples, particularly the famous Zenkō-ji. The region is also a hotspot for skiing and snowboarding, offering some of the country\'s best powder.',
-          image:'{{ asset('landing1/assets/images/taman-safari2.jpeg') }}'
-      },
-      {
-          place:'Sahara Desert - Morocco',
-          title:'MARRAKECH',
-          title2:'MEROUGA',
-          description:'The journey from the vibrant souks and palaces of Marrakech to the tranquil, starlit sands of Merzouga showcases the diverse splendor of Morocco. Camel treks and desert camps offer an unforgettable immersion into the nomadic way of life.',
-          image:'{{ asset('landing1/assets/images/taman-safari3.jpeg') }}'
-      },
-      {
-          place:'Sierra Nevada - USA',
-          title:'YOSEMITE',
-          title2:'NATIONAL PARAK',
-          description:'Yosemite National Park is a showcase of the American wilderness, revered for its towering granite monoliths, ancient giant sequoias, and thundering waterfalls. The park offers year-round recreational activities, from rock climbing to serene valley walks.',
-          image:'{{ asset('landing1/assets/images/taman-safari4.jpeg') }}'
-      },
-      {
-          place:'Tarifa - Spain',
-          title:'LOS LANCES',
-          title2:'BEACH',
-          description:'Los Lances Beach in Tarifa is a coastal paradise known for its consistent winds, making it a world-renowned spot for kitesurfing and windsurfing. The beach\'s long, sandy shores provide ample space for relaxation and sunbathing, with a vibrant atmosphere of beach bars and cafes.',
-          image:'{{ asset('landing1/assets/images/taman-safari5.jpg') }}'
-      },
-      {
-          place:'Cappadocia - Turkey',
-          title:'Göreme',
-          title2:'Valley',
-          description:'Göreme Valley in Cappadocia is a historical marvel set against a unique geological backdrop, where centuries of wind and water have sculpted the landscape into whimsical formations. The valley is also famous for its open-air museums, underground cities, and the enchanting experience of hot air ballooning.',
-          image:'https://assets.codepen.io/3685267/timed-cards-6.jpg'
-      },
-    ]
-
-const _ = (id)=>document.getElementById(id)
-const cards = data.map((i, index)=>`<div class="card" id="card${index}" style="background-image:url(${i.image})"  ></div>`).join('')
+    <!-- Video Modal End -->
 
 
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p><span class="text-primary me-2">#</span>Welcome To Zoofari</p>
+                    <h1 class="display-5 mb-4">Why You Should Visit <span class="text-primary">Zoofari</span> Park!</h1>
+                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
+                    <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Free Car Parking</h5>
+                    <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Natural Environment</h5>
+                    <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Professional Guide & Security</h5>
+                    <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>World Best Animals</h5>
+                    <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="img-border">
+                        <img class="img-fluid" src="img/about.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
 
-const cardContents = data.map((i, index)=>`<div class="card-content" id="card-content-${index}">
-<div class="content-start"></div>
-<div class="content-place">${i.place}</div>
-<div class="content-title-1">${i.title}</div>
-<div class="content-title-2">${i.title2}</div>
 
-</div>`).join('')
+    <!-- Facts Start -->
+    <div class="container-xxl bg-primary facts my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
+                    <i class="fa fa-paw fa-3x text-primary mb-3"></i>
+                    <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                    <p class="text-white mb-0">Total Animal</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
+                    <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                    <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                    <p class="text-white mb-0">Daily Vigitors</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
+                    <i class="fa fa-certificate fa-3x text-primary mb-3"></i>
+                    <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                    <p class="text-white mb-0">Total Membership</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
+                    <i class="fa fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                    <p class="text-white mb-0">Save Wild Life</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts End -->
 
 
-const sildeNumbers = data.map((_, index)=>`<div class="item" id="slide-item-${index}" >${index+1}</div>`).join('')
-_('demo').innerHTML =  cards + cardContents
-_('slide-numbers').innerHTML =  sildeNumbers
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <p><span class="text-primary me-2">#</span>Our Services</p>
+                    <h1 class="display-5 mb-0">Special Services For <span class="text-primary">Zoofari</span> Visitors</h1>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-primary h-100 d-flex align-items-center py-4 px-4 px-sm-5">
+                        <i class="fa fa-3x fa-mobile-alt text-white"></i>
+                        <div class="ms-4">
+                            <p class="text-white mb-0">Call for more info</p>
+                            <h2 class="text-white mb-0">+012 345 6789</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-2.png" alt="Icon">
+                    <h5 class="mb-3">Car Parking</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-3.png" alt="Icon">
+                    <h5 class="mb-3">Animal Photos</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-4.png" alt="Icon">
+                    <h5 class="mb-3">Guide Services</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-5.png" alt="Icon">
+                    <h5 class="mb-3">Food & Beverages</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-6.png" alt="Icon">
+                    <h5 class="mb-3">Zoo Shopping</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-7.png" alt="Icon">
+                    <h5 class="mb-3">Free Hi Speed Wi-Fi</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-8.png" alt="Icon">
+                    <h5 class="mb-3">Play Ground</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <img class="img-fluid mb-3" src="img/icon/icon-9.png" alt="Icon">
+                    <h5 class="mb-3">Rest House</h5>
+                    <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
 
 
-const range = (n) =>
-Array(n)
-  .fill(0)
-  .map((i, j) => i + j);
-const set = gsap.set;
+    <!-- Animal Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <p><span class="text-primary me-2">#</span>Our Animals</p>
+                    <h1 class="display-5 mb-0">Let`s See Our <span class="text-primary">Zoofari</span> Awsome Animals</h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a class="btn btn-primary py-3 px-5" href="">Explore More Animals</a>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <a class="animal-item" href="img/animal-md-1.jpg" data-lightbox="animal">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="img/animal-md-1.jpg" alt="">
+                                    <div class="animal-text p-4">
+                                        <p class="text-white small text-uppercase mb-0">Animal</p>
+                                        <h5 class="text-white mb-0">Elephant</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <a class="animal-item" href="img/animal-lg-1.jpg" data-lightbox="animal">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="img/animal-lg-1.jpg" alt="">
+                                    <div class="animal-text p-4">
+                                        <p class="text-white small text-uppercase mb-0">Animal</p>
+                                        <h5 class="text-white mb-0">Elephant</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <a class="animal-item" href="img/animal-lg-2.jpg" data-lightbox="animal">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="img/animal-lg-2.jpg" alt="">
+                                    <div class="animal-text p-4">
+                                        <p class="text-white small text-uppercase mb-0">Animal</p>
+                                        <h5 class="text-white mb-0">Elephant</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <a class="animal-item" href="img/animal-md-2.jpg" data-lightbox="animal">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="img/animal-md-2.jpg" alt="">
+                                    <div class="animal-text p-4">
+                                        <p class="text-white small text-uppercase mb-0">Animal</p>
+                                        <h5 class="text-white mb-0">Elephant</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <a class="animal-item" href="img/animal-md-3.jpg" data-lightbox="animal">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="img/animal-md-3.jpg" alt="">
+                                    <div class="animal-text p-4">
+                                        <p class="text-white small text-uppercase mb-0">Animal</p>
+                                        <h5 class="text-white mb-0">Elephant</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <a class="animal-item" href="img/animal-lg-3.jpg" data-lightbox="animal">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="img/animal-lg-3.jpg" alt="">
+                                    <div class="animal-text p-4">
+                                        <p class="text-white small text-uppercase mb-0">Animal</p>
+                                        <h5 class="text-white mb-0">Elephant</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Animal End -->
 
-function getCard(index) {
-return `#card${index}`;
-}
-function getCardContent(index) {
-return `#card-content-${index}`;
-}
-function getSliderItem(index) {
-return `#slide-item-${index}`;
-}
 
-function animate(target, duration, properties) {
-return new Promise((resolve) => {
-  gsap.to(target, {
-    ...properties,
-    duration: duration,
-    onComplete: resolve,
-  });
-});
-}
+    <!-- Visiting Hours Start -->
+    <div class="container-xxl bg-primary visiting-hours my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+                    <h1 class="display-6 text-white mb-5">Visiting Hours</h1>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <span>Monday</span>
+                            <span>9:00AM - 6:00PM</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Tuesday</span>
+                            <span>9:00AM - 6:00PM</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Wednesday</span>
+                            <span>9:00AM - 6:00PM</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Thursday</span>
+                            <span>9:00AM - 6:00PM</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Friday</span>
+                            <span>9:00AM - 6:00PM</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Saturday</span>
+                            <span>9:00AM - 6:00PM</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Sunday</span>
+                            <span>Closed</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-light wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-6 text-white mb-5">Contact Info</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Office</td>
+                                <td>123 Street, New York, USA</td>
+                            </tr>
+                            <tr>
+                                <td>Zoo</td>
+                                <td>123 Street, New York, USA</td>
+                            </tr>
+                            <tr>
+                                <td>Ticket</td>
+                                <td>
+                                    <p class="mb-2">+012 345 6789</p>
+                                    <p class="mb-0">ticket@example.com</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Support</td>
+                                <td>
+                                    <p class="mb-2">+012 345 6789</p>
+                                    <p class="mb-0">support@example.com</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Visiting Hours End -->
 
-let order = [0, 1, 2, 3, 4, 5];
-let detailsEven = true;
 
-let offsetTop = 200;
-let offsetLeft = 700;
-let cardWidth = 200;
-let cardHeight = 300;
-let gap = 40;
-let numberSize = 50;
-const ease = "sine.inOut";
+    <!-- Membership Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <p><span class="text-primary me-2">#</span>Membership</p>
+                    <h1 class="display-5 mb-0">You Can Be A Proud Member Of <span class="text-primary">Zoofari</span></h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a class="btn btn-primary py-3 px-5" href="">Special Pricing</a>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="membership-item position-relative">
+                        <img class="img-fluid" src="img/animal-lg-1.jpg" alt="">
+                        <h1 class="display-1">01</h1>
+                        <h4 class="text-white mb-3">Popular</h4>
+                        <h3 class="text-primary mb-4">$99.00</h3>
+                        <p><i class="fa fa-check text-primary me-3"></i>10% discount</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>2 adult and 2 child</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Free animal exhibition</p>
+                        <a class="btn btn-outline-light px-4 mt-3" href="">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="membership-item position-relative">
+                        <img class="img-fluid" src="img/animal-lg-2.jpg" alt="">
+                        <h1 class="display-1">02</h1>
+                        <h4 class="text-white mb-3">Standard</h4>
+                        <h3 class="text-primary mb-4">$149.00</h3>
+                        <p><i class="fa fa-check text-primary me-3"></i>15% discount</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>4 adult and 4 child</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Free animal exhibition</p>
+                        <a class="btn btn-outline-light px-4 mt-3" href="">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="membership-item position-relative">
+                        <img class="img-fluid" src="img/animal-lg-3.jpg" alt="">
+                        <h1 class="display-1">03</h1>
+                        <h4 class="text-white mb-3">Premium</h4>
+                        <h3 class="text-primary mb-4">$199.00</h3>
+                        <p><i class="fa fa-check text-primary me-3"></i>20% discount</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>6 adult and 6 child</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Free animal exhibition</p>
+                        <a class="btn btn-outline-light px-4 mt-3" href="">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Membership End -->
 
-function init() {
-const [active, ...rest] = order;
-const detailsActive = detailsEven ? "#details-even" : "#details-odd";
-const detailsInactive = detailsEven ? "#details-odd" : "#details-even";
-const { innerHeight: height, innerWidth: width } = window;
-offsetTop = height - 430;
-offsetLeft = width - 830;
 
-gsap.set("#pagination", {
-  top: offsetTop + 330,
-  left: offsetLeft,
-  y: 200,
-  opacity: 0,
-  zIndex: 60,
-});
-gsap.set("nav", { y: -200, opacity: 0 });
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 class="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Our Clients Say!</h1>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
+                        <h5 class="mb-1">Patient Name</h5>
+                        <span class="fst-italic">Profession</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
+                        <h5 class="mb-1">Patient Name</h5>
+                        <span class="fst-italic">Profession</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="img/testimonial-3.jpg" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
+                        <h5 class="mb-1">Patient Name</h5>
+                        <span class="fst-italic">Profession</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
 
-gsap.set(getCard(active), {
-  x: 0,
-  y: 0,
-  width: window.innerWidth,
-  height: window.innerHeight,
-});
-gsap.set(getCardContent(active), { x: 0, y: 0, opacity: 0 });
-gsap.set(detailsActive, { opacity: 0, zIndex: 22, x: -200 });
-gsap.set(detailsInactive, { opacity: 0, zIndex: 12 });
-gsap.set(`${detailsInactive} .text`, { y: 100 });
-gsap.set(`${detailsInactive} .title-1`, { y: 100 });
-gsap.set(`${detailsInactive} .title-2`, { y: 100 });
-gsap.set(`${detailsInactive} .desc`, { y: 50 });
-gsap.set(`${detailsInactive} .cta`, { y: 60 });
 
-gsap.set(".progress-sub-foreground", {
-  width: 500 * (1 / order.length) * (active + 1),
-});
+    <!-- Footer Start -->
+    <div class="container-fluid footer bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Popular Links</h5>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Newsletter</h5>
+                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
 
-rest.forEach((i, index) => {
-  gsap.set(getCard(i), {
-    x: offsetLeft + 400 + index * (cardWidth + gap),
-    y: offsetTop,
-    width: cardWidth,
-    height: cardHeight,
-    zIndex: 30,
-    borderRadius: 10,
-  });
-  gsap.set(getCardContent(i), {
-    x: offsetLeft + 400 + index * (cardWidth + gap),
-    zIndex: 40,
-    y: offsetTop + cardHeight - 100,
-  });
-  gsap.set(getSliderItem(i), { x: (index + 1) * numberSize });
-});
 
-gsap.set(".indicator", { x: -window.innerWidth });
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-const startDelay = 0.6;
 
-gsap.to(".cover", {
-  x: width + 400,
-  delay: 0.5,
-  ease,
-  onComplete: () => {
-    setTimeout(() => {
-      loop();
-    }, 500);
-  },
-});
-rest.forEach((i, index) => {
-  gsap.to(getCard(i), {
-    x: offsetLeft + index * (cardWidth + gap),
-    zIndex: 30,
-    delay: 0.05 * index,
-    ease,
-    delay: startDelay,
-  });
-  gsap.to(getCardContent(i), {
-    x: offsetLeft + index * (cardWidth + gap),
-    zIndex: 40,
-    delay: 0.05 * index,
-    ease,
-    delay: startDelay,
-  });
-});
-gsap.to("#pagination", { y: 0, opacity: 1, ease, delay: startDelay });
-gsap.to("nav", { y: 0, opacity: 1, ease, delay: startDelay });
-gsap.to(detailsActive, { opacity: 1, x: 0, ease, delay: startDelay });
-}
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('landing/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/lightbox/js/lightbox.min.js') }}"></script>
 
-let clicks = 0;
-
-function step() {
-return new Promise((resolve) => {
-  order.push(order.shift());
-  detailsEven = !detailsEven;
-
-  const detailsActive = detailsEven ? "#details-even" : "#details-odd";
-  const detailsInactive = detailsEven ? "#details-odd" : "#details-even";
-
-  document.querySelector(`${detailsActive} .place-box .text`).textContent =
-    data[order[0]].place;
-  document.querySelector(`${detailsActive} .title-1`).textContent =
-    data[order[0]].title;
-  document.querySelector(`${detailsActive} .title-2`).textContent =
-    data[order[0]].title2;
-  document.querySelector(`${detailsActive} .desc`).textContent =
-    data[order[0]].description;
-
-  gsap.set(detailsActive, { zIndex: 22 });
-  gsap.to(detailsActive, { opacity: 1, delay: 0.4, ease });
-  gsap.to(`${detailsActive} .text`, {
-    y: 0,
-    delay: 0.1,
-    duration: 0.7,
-    ease,
-  });
-  gsap.to(`${detailsActive} .title-1`, {
-    y: 0,
-    delay: 0.15,
-    duration: 0.7,
-    ease,
-  });
-  gsap.to(`${detailsActive} .title-2`, {
-    y: 0,
-    delay: 0.15,
-    duration: 0.7,
-    ease,
-  });
-  gsap.to(`${detailsActive} .desc`, {
-    y: 0,
-    delay: 0.3,
-    duration: 0.4,
-    ease,
-  });
-  gsap.to(`${detailsActive} .cta`, {
-    y: 0,
-    delay: 0.35,
-    duration: 0.4,
-    onComplete: resolve,
-    ease,
-  });
-  gsap.set(detailsInactive, { zIndex: 12 });
-
-  const [active, ...rest] = order;
-  const prv = rest[rest.length - 1];
-
-  gsap.set(getCard(prv), { zIndex: 10 });
-  gsap.set(getCard(active), { zIndex: 20 });
-  gsap.to(getCard(prv), { scale: 1.5, ease });
-
-  gsap.to(getCardContent(active), {
-    y: offsetTop + cardHeight - 10,
-    opacity: 0,
-    duration: 0.3,
-    ease,
-  });
-  gsap.to(getSliderItem(active), { x: 0, ease });
-  gsap.to(getSliderItem(prv), { x: -numberSize, ease });
-  gsap.to(".progress-sub-foreground", {
-    width: 500 * (1 / order.length) * (active + 1),
-    ease,
-  });
-
-  gsap.to(getCard(active), {
-    x: 0,
-    y: 0,
-    ease,
-    width: window.innerWidth,
-    height: window.innerHeight,
-    borderRadius: 0,
-    onComplete: () => {
-      const xNew = offsetLeft + (rest.length - 1) * (cardWidth + gap);
-      gsap.set(getCard(prv), {
-        x: xNew,
-        y: offsetTop,
-        width: cardWidth,
-        height: cardHeight,
-        zIndex: 30,
-        borderRadius: 10,
-        scale: 1,
-      });
-
-      gsap.set(getCardContent(prv), {
-        x: xNew,
-        y: offsetTop + cardHeight - 100,
-        opacity: 1,
-        zIndex: 40,
-      });
-      gsap.set(getSliderItem(prv), { x: rest.length * numberSize });
-
-      gsap.set(detailsInactive, { opacity: 0 });
-      gsap.set(`${detailsInactive} .text`, { y: 100 });
-      gsap.set(`${detailsInactive} .title-1`, { y: 100 });
-      gsap.set(`${detailsInactive} .title-2`, { y: 100 });
-      gsap.set(`${detailsInactive} .desc`, { y: 50 });
-      gsap.set(`${detailsInactive} .cta`, { y: 60 });
-      clicks -= 1;
-      if (clicks > 0) {
-        step();
-      }
-    },
-  });
-
-  rest.forEach((i, index) => {
-    if (i !== prv) {
-      const xNew = offsetLeft + index * (cardWidth + gap);
-      gsap.set(getCard(i), { zIndex: 30 });
-      gsap.to(getCard(i), {
-        x: xNew,
-        y: offsetTop,
-        width: cardWidth,
-        height: cardHeight,
-        ease,
-        delay: 0.1 * (index + 1),
-      });
-
-      gsap.to(getCardContent(i), {
-        x: xNew,
-        y: offsetTop + cardHeight - 100,
-        opacity: 1,
-        zIndex: 40,
-        ease,
-        delay: 0.1 * (index + 1),
-      });
-      gsap.to(getSliderItem(i), { x: (index + 1) * numberSize, ease });
-    }
-  });
-});
-}
-
-async function loop() {
-await animate(".indicator", 2, { x: 0 });
-await animate(".indicator", 0.8, { x: window.innerWidth, delay: 0.3 });
-set(".indicator", { x: -window.innerWidth });
-await step();
-loop();
-}
-
-async function loadImage(src) {
-return new Promise((resolve, reject) => {
-  let img = new Image();
-  img.onload = () => resolve(img);
-  img.onerror = reject;
-  img.src = src;
-});
-}
-
-async function loadImages() {
-const promises = data.map(({ image }) => loadImage(image));
-return Promise.all(promises);
-}
-
-async function start() {
-try {
-  await loadImages();
-  init();
-} catch (error) {
-  console.error("One or more images failed to load", error);
-}
-}
-
-start()
-  </script>
+    <!-- Template Javascript -->
+    <script src="{{ asset('landing/js/main.js') }}"></script>
 </body>
+
 </html>
