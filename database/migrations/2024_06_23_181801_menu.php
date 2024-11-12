@@ -12,7 +12,6 @@ class Menu extends Migration
             $table->increments('ID_MENU'); // Auto increment ID
             $table->string('MENU_NAME', 60);
             $table->string('MENU_LINK', 300);
-            $table->string('MENU_ICON', 300)->nullable();
             $table->unsignedInteger('PARENT_ID')->nullable();
             $table->string('CREATE_BY', 30);
             $table->timestamp('CREATE_DATE');
