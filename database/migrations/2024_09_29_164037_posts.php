@@ -12,7 +12,6 @@ return new class extends Migration
             $table->increments('POSTING_ID');
             $table->unsignedInteger('SENDER');
             $table->text('MESSAGE_TEXT');
-            $table->string('MESSAGE_GAMBAR', 200)->nullable();
             $table->string('CREATE_BY', 30)->nullable();
             $table->timestamp('CREATE_DATE')->nullable();
             $table->char('DELETE_MARK', 1)->default('0');

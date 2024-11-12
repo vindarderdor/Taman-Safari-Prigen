@@ -9,23 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('emitens', function (Blueprint $table) {
-            $table->string('stock_code', 4)->primary();
-            $table->string('stock_name', 100);
-            $table->bigInteger('shared');
-            $table->string('sektor', 60);
+        Schema::create('jadwals', function (Blueprint $table) {
+            $table->increments('ID_JADWAL');
+            $table->date('TANGGAL');
+            $table->time('JAM_BUKA');
+            $table->time('JAM_TUTUP');
+            $table->boolean('IS_OPEN')->default(true);
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('emitens');
+        Schema::dropIfExists('jadwals');
     }
 };
