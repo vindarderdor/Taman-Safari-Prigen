@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ asset('') }}landing/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,41 +42,13 @@
     <!-- Spinner End -->
 
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>123 Street, New York, USA</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center py-3">
-                    <small class="far fa-clock text-primary me-2"></small>
-                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
-                </div>
-            </div>
-            <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+012 345 6789</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
 
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand p-0">
-            <img class="img-fluid me-3" src="img/icon/icon-10.png" alt="Icon">
-            <h1 class="m-0 text-primary">Zoofari</h1>
+            <img class="img-fluid me-3" src="{{ asset('') }}landing/img/icon/icon-10.png" alt="Icon">
+            {{-- <h1 class="m-0 text-primary">Zoofari</h1> --}}
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -85,8 +57,8 @@
             <div class="navbar-nav ms-auto">
                 <a href="index.html" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <div class="nav-item dropdown">
+                <a href="service.html" class="nav-item nav-link">Event</a>
+                {{-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="animal.html" class="dropdown-item">Our Animals</a>
@@ -95,7 +67,7 @@
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
-                </div>
+                </div> --}}
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
             <a href="" class="btn btn-primary">Buy Ticket<i class="fa fa-arrow-right ms-3"></i></a>
@@ -107,30 +79,21 @@
     <!-- Header Start -->
     <div class="container-fluid bg-dark p-0 mb-5">
         <div class="row g-0 flex-column-reverse flex-lg-row">
-            <div class="col-lg-6 p-0 wow fadeIn" data-wow-delay="0.1s">
+            {{-- <div class="col-lg-6 p-0 wow fadeIn" data-wow-delay="0.1s">
                 <div class="header-bg h-100 d-flex flex-column justify-content-center p-5">
-                    <h1 class="display-4 text-light mb-5">Enjoy Wonderful Day With Your Family</h1>
-                    <div class="d-flex align-items-center pt-4 animated slideInDown">
-                        <a href="" class="btn btn-primary py-sm-3 px-3 px-sm-5 me-5">Read More</a>
-                        <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                        <h6 class="text-white m-0 ms-4 d-none d-sm-block">Watch Video</h6>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+            </div> --}}
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
                 <div class="owl-carousel header-carousel">
                     <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/bg-1.jpg" alt="">
+                    </div>
+                    {{-- <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/carousel-2.jpg" alt="">
                     </div>
                     <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-2.jpg" alt="">
-                    </div>
-                    <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-3.jpg" alt="">
-                    </div>
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/carousel-3.jpg" alt="">
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -164,18 +127,18 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p><span class="text-primary me-2">#</span>Welcome To Zoofari</p>
-                    <h1 class="display-5 mb-4">Why You Should Visit <span class="text-primary">Zoofari</span> Park!</h1>
+                    <p><span class="text-primary me-2">#</span>Selamat Datang di Taman Safari Prigen</p>
+                    <h1 class="display-5 mb-4">Why You Should Visit <span class="text-primary">Taman Safari Prigen</span></h1>
                     <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
                     <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Free Car Parking</h5>
                     <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Natural Environment</h5>
                     <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Professional Guide & Security</h5>
                     <h5 class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>World Best Animals</h5>
-                    <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                    <a class="btn btn-primary py-3 px-5 mt-3" href="https://www.indonesia-tourism.com/east-java/tourism/pasuruan/taman_safari/map/tamansafari_map.png">zoom map</a>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="img-border">
-                        <img class="img-fluid" src="img/about.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/map.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -185,7 +148,7 @@
 
 
     <!-- Facts Start -->
-    <div class="container-xxl bg-primary facts my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
+    {{-- <div class="container-xxl bg-primary facts my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
@@ -210,12 +173,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Facts End -->
 
 
     <!-- Service Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
@@ -234,48 +197,48 @@
             </div>
             <div class="row gy-5 gx-4">
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-2.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-2.png" alt="Icon">
                     <h5 class="mb-3">Car Parking</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-3.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-3.png" alt="Icon">
                     <h5 class="mb-3">Animal Photos</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-4.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-4.png" alt="Icon">
                     <h5 class="mb-3">Guide Services</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-5.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-5.png" alt="Icon">
                     <h5 class="mb-3">Food & Beverages</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-6.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-6.png" alt="Icon">
                     <h5 class="mb-3">Zoo Shopping</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-7.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-7.png" alt="Icon">
                     <h5 class="mb-3">Free Hi Speed Wi-Fi</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-8.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-8.png" alt="Icon">
                     <h5 class="mb-3">Play Ground</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <img class="img-fluid mb-3" src="img/icon/icon-9.png" alt="Icon">
+                    <img class="img-fluid mb-3" src="{{ asset('') }}landing/img/icon/icon-9.png" alt="Icon">
                     <h5 class="mb-3">Rest House</h5>
                     <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</span>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Service End -->
 
 
@@ -285,7 +248,7 @@
             <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
                     <p><span class="text-primary me-2">#</span>Our Animals</p>
-                    <h1 class="display-5 mb-0">Let`s See Our <span class="text-primary">Zoofari</span> Awsome Animals</h1>
+                    <h1 class="display-5 mb-0"><span class="text-primary">Taman Safari Prigen</span> Awsome Animals</h1>
                 </div>
                 <div class="col-lg-6 text-lg-end">
                     <a class="btn btn-primary py-3 px-5" href="">Explore More Animals</a>
@@ -295,9 +258,9 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="row g-4">
                         <div class="col-12">
-                            <a class="animal-item" href="img/animal-md-1.jpg" data-lightbox="animal">
+                            <a class="animal-item" href="{{ asset('') }}landing/img/animal-md-1.jpg" data-lightbox="animal">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="img/animal-md-1.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('') }}landing/img/animal-md-1.jpg" alt="">
                                     <div class="animal-text p-4">
                                         <p class="text-white small text-uppercase mb-0">Animal</p>
                                         <h5 class="text-white mb-0">Elephant</h5>
@@ -306,9 +269,9 @@
                             </a>
                         </div>
                         <div class="col-12">
-                            <a class="animal-item" href="img/animal-lg-1.jpg" data-lightbox="animal">
+                            <a class="animal-item" href="{{ asset('') }}landing/img/animal-lg-1.jpg" data-lightbox="animal">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="img/animal-lg-1.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('') }}landing/img/animal-lg-1.jpg" alt="">
                                     <div class="animal-text p-4">
                                         <p class="text-white small text-uppercase mb-0">Animal</p>
                                         <h5 class="text-white mb-0">Elephant</h5>
@@ -321,9 +284,9 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="row g-4">
                         <div class="col-12">
-                            <a class="animal-item" href="img/animal-lg-2.jpg" data-lightbox="animal">
+                            <a class="animal-item" href="{{ asset('') }}landing/img/animal-lg-2.jpg" data-lightbox="animal">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="img/animal-lg-2.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('') }}landing/img/animal-lg-2.jpg" alt="">
                                     <div class="animal-text p-4">
                                         <p class="text-white small text-uppercase mb-0">Animal</p>
                                         <h5 class="text-white mb-0">Elephant</h5>
@@ -332,9 +295,9 @@
                             </a>
                         </div>
                         <div class="col-12">
-                            <a class="animal-item" href="img/animal-md-2.jpg" data-lightbox="animal">
+                            <a class="animal-item" href="{{ asset('') }}landing/img/animal-md-2.jpg" data-lightbox="animal">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="img/animal-md-2.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('') }}landing/img/animal-md-2.jpg" alt="">
                                     <div class="animal-text p-4">
                                         <p class="text-white small text-uppercase mb-0">Animal</p>
                                         <h5 class="text-white mb-0">Elephant</h5>
@@ -347,9 +310,9 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="row g-4">
                         <div class="col-12">
-                            <a class="animal-item" href="img/animal-md-3.jpg" data-lightbox="animal">
+                            <a class="animal-item" href="{{ asset('') }}landing/img/animal-md-3.jpg" data-lightbox="animal">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="img/animal-md-3.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('') }}landing/img/animal-md-3.jpg" alt="">
                                     <div class="animal-text p-4">
                                         <p class="text-white small text-uppercase mb-0">Animal</p>
                                         <h5 class="text-white mb-0">Elephant</h5>
@@ -358,9 +321,9 @@
                             </a>
                         </div>
                         <div class="col-12">
-                            <a class="animal-item" href="img/animal-lg-3.jpg" data-lightbox="animal">
+                            <a class="animal-item" href="{{ asset('') }}landing/img/animal-lg-3.jpg" data-lightbox="animal">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="img/animal-lg-3.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('') }}landing/img/animal-lg-3.jpg" alt="">
                                     <div class="animal-text p-4">
                                         <p class="text-white small text-uppercase mb-0">Animal</p>
                                         <h5 class="text-white mb-0">Elephant</h5>
@@ -380,40 +343,40 @@
     <div class="container-xxl bg-primary visiting-hours my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
-                <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                    <h1 class="display-6 text-white mb-5">Visiting Hours</h1>
+                <div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
+                    <h1 class="display-12 text-white mb-5">Visiting Hours</h1>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <span>Monday</span>
-                            <span>9:00AM - 6:00PM</span>
+                            <span>Senin</span>
+                            <span>09:00 - 18:00</span>
                         </li>
                         <li class="list-group-item">
-                            <span>Tuesday</span>
-                            <span>9:00AM - 6:00PM</span>
+                            <span>Selasa</span>
+                            <span>09:00 - 18:00</span>
                         </li>
                         <li class="list-group-item">
-                            <span>Wednesday</span>
-                            <span>9:00AM - 6:00PM</span>
+                            <span>Rabu</span>
+                            <span>09:00 - 18:00</span>
                         </li>
                         <li class="list-group-item">
-                            <span>Thursday</span>
-                            <span>9:00AM - 6:00PM</span>
+                            <span>Kamis</span>
+                            <span>09:00 - 18:00</span>
                         </li>
                         <li class="list-group-item">
-                            <span>Friday</span>
-                            <span>9:00AM - 6:00PM</span>
+                            <span>Jumat</span>
+                            <span>09:00 - 18:00</span>
                         </li>
                         <li class="list-group-item">
-                            <span>Saturday</span>
-                            <span>9:00AM - 6:00PM</span>
+                            <span>Sabtu</span>
+                            <span>09:00 - 18:00</span>
                         </li>
                         <li class="list-group-item">
-                            <span>Sunday</span>
-                            <span>Closed</span>
+                            <span>Minggu</span>
+                            <span>Tutup</span>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-6 text-light wow fadeIn" data-wow-delay="0.5s">
+                {{-- <div class="col-md-6 text-light wow fadeIn" data-wow-delay="0.5s">
                     <h1 class="display-6 text-white mb-5">Contact Info</h1>
                     <table class="table">
                         <tbody>
@@ -441,7 +404,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -449,7 +412,7 @@
 
 
     <!-- Membership Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
@@ -463,7 +426,7 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="membership-item position-relative">
-                        <img class="img-fluid" src="img/animal-lg-1.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/animal-lg-1.jpg" alt="">
                         <h1 class="display-1">01</h1>
                         <h4 class="text-white mb-3">Popular</h4>
                         <h3 class="text-primary mb-4">$99.00</h3>
@@ -475,7 +438,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="membership-item position-relative">
-                        <img class="img-fluid" src="img/animal-lg-2.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/animal-lg-2.jpg" alt="">
                         <h1 class="display-1">02</h1>
                         <h4 class="text-white mb-3">Standard</h4>
                         <h3 class="text-primary mb-4">$149.00</h3>
@@ -487,7 +450,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="membership-item position-relative">
-                        <img class="img-fluid" src="img/animal-lg-3.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('') }}landing/img/animal-lg-3.jpg" alt="">
                         <h1 class="display-1">03</h1>
                         <h4 class="text-white mb-3">Premium</h4>
                         <h3 class="text-primary mb-4">$199.00</h3>
@@ -499,7 +462,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Membership End -->
 
 
@@ -509,27 +472,27 @@
             <h1 class="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Our Clients Say!</h1>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;">
+                    {{-- <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="{{ asset('') }}landing/img/testimonial-1.jpg" style="width: 100px; height: 100px;"> --}}
                     <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Patient Name</h5>
-                        <span class="fst-italic">Profession</span>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore laborum iusto amet voluptatem molestiae quibusdam voluptatum architecto culpa. Beatae accusantium ipsa et nostrum illum nisi dignissimos alias, mollitia cumque eos!</p>
+                        <h5 class="mb-1">alim</h5>
+                        {{-- <span class="fst-italic">Profession</span> --}}
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;">
+                    {{-- <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="{{ asset('') }}landing/img/testimonial-2.jpg" style="width: 100px; height: 100px;"> --}}
                     <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Patient Name</h5>
-                        <span class="fst-italic">Profession</span>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem necessitatibus iste similique ipsum voluptas ipsa. Fugit rem doloribus velit reprehenderit voluptatum non totam, minima earum quos, necessitatibus molestias accusantium ipsam.</p>
+                        <h5 class="mb-1">bowil</h5>
+                        {{-- <span class="fst-italic">Profession</span> --}}
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="img/testimonial-3.jpg" style="width: 100px; height: 100px;">
+                    {{-- <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="{{ asset('') }}landing/img/testimonial-3.jpg" style="width: 100px; height: 100px;"> --}}
                     <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem necessitatibus iste similique ipsum voluptas ipsa. Fugit rem doloribus velit reprehenderit voluptatum non totam, minima earum quos, necessitatibus molestias accusantium ipsam.</p>
                         <h5 class="mb-1">Patient Name</h5>
-                        <span class="fst-italic">Profession</span>
+                        {{-- <span class="fst-italic">Profession</span> --}}
                     </div>
                 </div>
             </div>
