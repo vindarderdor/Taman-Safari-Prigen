@@ -14,7 +14,7 @@
     </nav>
     </div>
 </div>
-<div class="mb-4">
+{{-- <div class="mb-4">
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <button id="monthDropdown" type="button" 
             class="btn bg-primary-subtle text-primary dropdown-toggle rounded-end"
@@ -492,7 +492,7 @@ Download
         background-color: var(--bs-primary-bg-subtle);
         color: var(--bs-primary);
     }
-    </style>
+    </style> --}}
   
 @endsection
 {{-- <x-app-layout>
