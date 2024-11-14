@@ -10,26 +10,26 @@
     <link
       rel="shortcut icon"
       type="image/png"
-      href="{{ asset('') }}landing/assets/images/logos/favicon.png"
+      href="{{ asset('') }}assets/images/logos/favicon.png"
     />
 
     <!-- Core Css -->
-    <link rel="stylesheet" href="{{ asset('') }}landing/assets/css/styles.css" />
+    <link rel="stylesheet" href="{{ asset('') }}assets/css/styles.css" />
 
     <title>Spike Bootstrap Admin</title>
     <!-- Owl Carousel  -->
     <link
       rel="stylesheet"
-      href="{{ asset('') }}landing/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css"
+      href="{{ asset('') }}assets/libs/owl.carousel/dist/assets/owl.carousel.min.css"
     />
-    <link rel="stylesheet" href="{{ asset('') }}landing/assets/libs/aos/dist/aos.css" />
+    <link rel="stylesheet" href="{{ asset('') }}assets/libs/aos/dist/aos.css" />
   </head>
 
   <body>
     <!-- Preloader -->
     <div class="preloader">
       <img
-        src="{{ asset('') }}landing/assets/images/logos/favicon.png"
+        src="{{ asset('') }}assets/images/logos/favicon.png"
         alt="loader"
         class="lds-ripple img-fluid"
       />
@@ -40,7 +40,7 @@
           <div class="container">
             <a class="navbar-brand me-0 py-0" href="../main/index.html">
               <img
-                src="{{ asset('') }}landing/assets/images/logos/logo-light.svg"
+                src="{{ asset('') }}assets/images/logos/logo-light.svg"
                 alt="img-fluid"
               />
             </a>
@@ -138,7 +138,7 @@
       >
         <div class="offcanvas-header p-4">
           <img
-            src="{{ asset('') }}landing/assets/images/logos/logo-light.svg"
+            src="{{ asset('') }}assets/images/logos/logo-light.svg"
             alt=""
             class="img-fluid"
             width="150"
@@ -222,7 +222,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-chat.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-chat.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -246,7 +246,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-invoice.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-invoice.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -270,7 +270,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-mobile.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-mobile.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -294,7 +294,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-message-box.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-message-box.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -322,7 +322,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-cart.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-cart.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -346,7 +346,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-date.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-date.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -370,7 +370,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-lifebuoy.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-lifebuoy.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -394,7 +394,7 @@
                           class="bg-light rounded me-3 p-8 d-flex align-items-center justify-content-center"
                         >
                           <img
-                            src="{{ asset('') }}landing/assets/images/svgs/icon-dd-application.svg"
+                            src="{{ asset('') }}assets/images/svgs/icon-dd-application.svg"
                             alt=""
                             class="img-fluid"
                             width="24"
@@ -493,20 +493,20 @@
       </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>
-    <script src="{{ asset('') }}landing/assets/js/vendor.min.js"></script>
+    <script src="{{ asset('') }}assets/js/vendor.min.js"></script>
     <!-- Import Js Files -->
-    <script src="{{ asset('') }}landing/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('') }}landing/assets/libs/simplebar/dist/simplebar.min.js"></script>
-    <script src="{{ asset('') }}landing/assets/js/theme/app.init.js"></script>
-    <script src="{{ asset('') }}landing/assets/js/theme/theme.js"></script>
-    <script src="{{ asset('') }}landing/assets/js/theme/app.min.js"></script>
-    <script src="{{ asset('') }}landing/assets/js/theme/sidebarmenu.js"></script>
-    <script src="{{ asset('') }}landing/assets/js/theme/feather.min.js"></script>
+    <script src="{{ asset('') }}assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('') }}assets/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="{{ asset('') }}assets/js/theme/app.init.js"></script>
+    <script src="{{ asset('') }}assets/js/theme/theme.js"></script>
+    <script src="{{ asset('') }}assets/js/theme/app.min.js"></script>
+    <script src="{{ asset('') }}assets/js/theme/sidebarmenu.js"></script>
+    <script src="{{ asset('') }}assets/js/theme/feather.min.js"></script>
 
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="{{ asset('') }}landing/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="{{ asset('') }}landing/assets/libs/aos/dist/aos.js"></script>
-    <script src="{{ asset('') }}landing/assets/js/landingpage/landingpage.js"></script>
+    <script src="{{ asset('') }}assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="{{ asset('') }}assets/libs/aos/dist/aos.js"></script>
+    <script src="{{ asset('') }}assets/js/landingpage/landingpage.js"></script>
   </body>
 </html>

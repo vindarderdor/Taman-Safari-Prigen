@@ -491,7 +491,15 @@
                     {{-- <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="{{ asset('') }}landing/img/testimonial-3.jpg" style="width: 100px; height: 100px;"> --}}
                     <div class="testimonial-text rounded text-center p-4">
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem necessitatibus iste similique ipsum voluptas ipsa. Fugit rem doloribus velit reprehenderit voluptatum non totam, minima earum quos, necessitatibus molestias accusantium ipsam.</p>
-                        <h5 class="mb-1">Patient Name</h5>
+                        <h5 class="mb-1">Abiddar</h5>
+                        {{-- <span class="fst-italic">Profession</span> --}}
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    {{-- <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="{{ asset('') }}landing/img/testimonial-3.jpg" style="width: 100px; height: 100px;"> --}}
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem necessitatibus iste similique ipsum voluptas ipsa. Fugit rem doloribus velit reprehenderit voluptatum non totam, minima earum quos, necessitatibus molestias accusantium ipsam.</p>
+                        <h5 class="mb-1">Vinno</h5>
                         {{-- <span class="fst-italic">Profession</span> --}}
                     </div>
                 </div>
