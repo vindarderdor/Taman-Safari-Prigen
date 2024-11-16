@@ -12,6 +12,7 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
+        "midtrans/midtrans-php": "^2.6",
         "nesbot/carbon": "^3.8",
         "yajra/laravel-datatables-oracle": "^11.1"
     },

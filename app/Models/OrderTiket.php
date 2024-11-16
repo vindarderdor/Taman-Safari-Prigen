@@ -10,21 +10,24 @@ class OrderTiket extends Model
     use HasFactory;
 
 
+    protected $table = 'order_tikets';
+    protected $primaryKey = 'ID_TIKET';
+    
     protected $fillable = [
-        'user_id',
-        'schedule_id',
-        'quantity',
-        'total_price',
+        'ID_USER',
+        'ID_JADWAL',
+        'JUMLAH',
+        'TOTAL_HARGA',
         'payment_status'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'ID_USER');
     }
 
-    public function schedule()
+    public function jadwal()
     {
-        return $this->belongsTo(Jadwal::class);
+        return $this->belongsTo(Jadwal::class, 'ID_JADWAL');
     }
 }

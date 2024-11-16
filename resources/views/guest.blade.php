@@ -55,8 +55,8 @@
         </button>
         <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Event</a>
                 {{-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -77,7 +77,7 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid bg-dark p-0 mb-5">
+    <div class="container-fluid bg-dark p-0 mb-5" id="home">
         <div class="row g-0 flex-column-reverse flex-lg-row">
             {{-- <div class="col-lg-6 p-0 wow fadeIn" data-wow-delay="0.1s">
                 <div class="header-bg h-100 d-flex flex-column justify-content-center p-5">
@@ -123,7 +123,7 @@
 
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="about">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">

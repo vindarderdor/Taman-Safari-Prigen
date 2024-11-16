@@ -9,35 +9,24 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $table = 'posts';
     protected $primaryKey = 'POSTING_ID';
-    public $timestamps = false;
-
+    
     protected $fillable = [
         'SENDER',
         'MESSAGE_TEXT',
-        'MESSAGE_GAMBAR',
         'CREATE_BY',
         'DELETE_MARK',
-        'UPDATE_BY',
+        'UPDATE_BY'
     ];
 
-    protected $casts = [
-        'CREATE_DATE' => 'datetime',
-        'UPDATE_DATE' => 'datetime',
+    protected $dates = [
+        'CREATE_DATE',
+        'UPDATE_DATE'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'SENDER', 'ID_USER');
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Like::class, 'POSTING_ID', 'POSTING_ID');
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'POSTING_ID', 'POSTING_ID');
+        return $this->belongsTo(User::class, 'SENDER');
     }
 }
