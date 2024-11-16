@@ -9,10 +9,18 @@ class Jadwal extends Model
 {
     use HasFactory;
 
+    protected $table = 'jadwals';
+    protected $primaryKey = 'ID_JADWAL';
+    
     protected $fillable = [
-        'date',
-        'open_time',
-        'close_time',
-        'is_open'
+        'TANGGAL',
+        'JAM_BUKA',
+        'JAM_TUTUP',
+        'IS_OPEN'
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at'
     ];
 }

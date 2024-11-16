@@ -9,19 +9,22 @@ class Midtrans extends Model
 {
     use HasFactory;
 
+    protected $table = 'midtrans';
+    protected $primaryKey = 'ID_MIDTRANS';
+    
     protected $fillable = [
-        'order_tiket_id',
-        'transaction_id',
-        'status',
-        'gross_amount',
-        'payment_type',
-        'transaction_time',
-        'transaction_status',
-        'fraud_status'
+        'ID_TIKET',
+        'TRANSACTION_ID',
+        'STATUS',
+        'GROSS_AMOUNT',
+        'PAYMENT_TYPE',
+        'TRANSACTION_TIME',
+        'TRANSACTION_STATUS',
+        'FRAUD_STATUS'
     ];
 
     public function orderTiket()
     {
-        return $this->belongsTo(OrderTiket::class);
+        return $this->belongsTo(OrderTiket::class, 'ID_TIKET');
     }
 }
