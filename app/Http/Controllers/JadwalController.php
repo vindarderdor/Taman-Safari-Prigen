@@ -2,62 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jadwal;
 use Illuminate\Http\Request;
+use App\Models\Jadwal;
 
 class JadwalController extends Controller
 {
     public function index()
     {
-        $schedules = Jadwal::latest()->paginate(10);
-        return view('schedules.index', compact('schedules'));
+        $jadwals = Jadwal::all();
+        return view('content.jadwal.index', compact('jadwals'));
     }
 
-    public function create()
+    public function edit($id)
     {
-        return view('schedules.create');
+        $jadwal = Jadwal::findOrFail($id);
+        return view('content.jadwal.edit', compact('jadwal'));
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'TANGGAL' => 'required|date',
-            'JAM_BUKA' => 'required',
-            'JAM_TUTUP' => 'required',
-            'IS_OPEN' => 'required|boolean'
+        $request->validate([
+            'JAM_BUKA' => 'required|date_format:H:i',
+            'JAM_TUTUP' => 'required|date_format:H:i|after:JAM_BUKA',
         ]);
 
-        Jadwal::create($validated);
+        $jadwal = Jadwal::findOrFail($id);
+        $jadwal->update($request->only(['JAM_BUKA', 'JAM_TUTUP']));
 
-        return redirect()->route('schedules.index')
-            ->with('success', 'Jadwal berhasil ditambahkan');
-    }
-
-    public function edit(Jadwal $schedule)
-    {
-        return view('schedules.edit', compact('schedule'));
-    }
-
-    public function update(Request $request, Jadwal $schedule)
-    {
-        $validated = $request->validate([
-            'TANGGAL' => 'required|date',
-            'JAM_BUKA' => 'required',
-            'JAM_TUTUP' => 'required',
-            'IS_OPEN' => 'required|boolean'
-        ]);
-
-        $schedule->update($validated);
-
-        return redirect()->route('schedules.index')
-            ->with('success', 'Jadwal berhasil diperbarui');
-    }
-
-    public function destroy(Jadwal $schedule)
-    {
-        $schedule->delete();
-
-        return redirect()->route('schedules.index')
-            ->with('success', 'Jadwal berhasil dihapus');
+        return redirect()->route('jadwals.index')->with('success', 'Jadwal berhasil diperbarui');
     }
 }

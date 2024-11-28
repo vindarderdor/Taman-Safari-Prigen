@@ -77,15 +77,15 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:60',
-            'username' => 'required|string|max:60|unique:users,USERNAME',
             'email' => 'required|string|email|max:100|unique:users,EMAIL',
+            'name' => 'required|string|max:60',
+            'phone' => 'required|string|max:30',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
         DB::table('users')->insert([
             'NAMA_USER' => $request->input('name'),
-            'USERNAME' => $request->input('username'),
+            'NO_HP' => $request->input('phone'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'ID_JENIS_USER' => 2,

@@ -2,24 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CuacaController;
-use App\Http\Controllers\ManagementController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\BukuController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\UserActivityController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\LikeController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\GempaController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ManagementController;use App\Http\Controllers\ContentController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\testcontroller;
-use App\Http\Controllers\ContentController                          ;
 
 Route::get('/', function () {
     return view('guest');
+});
+Route::get('/jadwal', function () {
+    return view('pages.jadwal');
 });
 
 Route::get('/landing-page', [AuthController::class, 'landing'])->name('landing-page');
@@ -32,7 +24,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-Route::get('/dashboard2', [AuthController::class, 'dashboard2'])->name('dashboard2');
 
     Route::get('/users', [ManagementController::class, 'indexUser'])->name('management.users.index');
     Route::get('/users/create', [ManagementController::class, 'createUser'])->name('management.users.create');
@@ -40,9 +31,6 @@ Route::get('/dashboard2', [AuthController::class, 'dashboard2'])->name('dashboar
     Route::get('/users/edit/{id}', [ManagementController::class, 'editUser'])->name('management.users.edit');
     Route::post('/users/update/{id}', [ManagementController::class, 'updateUser'])->name('management.users.update');
     Route::delete('/users/delete/{id}', [ManagementController::class, 'deleteUser'])->name('management.users.delete');
-
-    Route::get('/userdatatables', [testcontroller::class, 'index'])->name('users.index');
-    Route::get('/userdatatables/data', [testcontroller::class, 'getUsersData'])->name('users.data');
 
     // Roles routes
     Route::get('/roles', [ManagementController::class, 'indexRole'])->name('management.roles.index');
@@ -74,13 +62,19 @@ Route::get('/dashboard2', [AuthController::class, 'dashboard2'])->name('dashboar
     Route::post('/settings/store', [ManagementController::class, 'storesetting'])->name('management.settings.store');
     Route::delete('/settings/{id}', [ManagementController::class, 'deletesetting'])->name('management.settings.delete');
 
-    //posts
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-    Route::post('/posts/{post}/like', [LikeController::class, 'toggle'])->name('posts.like');
-    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
-    // routes/web.php
-    Route::post('/download-stock', [AuthController::class, 'downloadStock'])->name('download.stock');
+    //content
 
-    Route::resource('content', ContentController::class);
+    Route::get('pesan', [PesanController::class, 'index'])->name('pesan.index');
+    Route::resource('tikets', ContentController::class);
+    Route::resource('jadwals', JadwalController::class);
+
+    //posts
+    // Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    // Route::post('/posts/{post}/like', [LikeController::class, 'toggle'])->name('posts.like');
+    // Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    // // routes/web.php
+    // Route::post('/download-stock', [AuthController::class, 'downloadStock'])->name('download.stock');
+
+    // Route::resource('content', ContentController::class);
 
 });

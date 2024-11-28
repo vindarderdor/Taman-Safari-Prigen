@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             JenisUserSeeder::class,
             UserSeeder::class,
+            JadwalSeeder::class,
             // ChildMenuSeeder::class,
             // ParentMenuSeeder::class,
             // SettingMenuUserSeeder::class,

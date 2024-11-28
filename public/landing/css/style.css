@@ -143,8 +143,10 @@
 
 /*** Header ***/
 .header-bg {
-    background: url(../img/bg-1.jpg) center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)),url(../img/bg-1.jpg) center center no-repeat;
     background-size: cover;
+    height: auto;
+    width: 100%;
 }
 
 .btn-play {
@@ -578,3 +580,47 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+.login a {
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 1rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    height: 10px;
+  }
+  
+  .btn-login {
+    background-color: transparent;
+    color: white;
+    margin: 10px;
+    height: 10px;
+  }
+  
+  .btn-login:hover {
+    background-color: white;
+    color: #2EB872;
+  }
+  
+  .btn-register {
+    background-color: #a5d6a7; /* Hijau muda */
+    color: #2EB872;
+    border: none;
+    height: 10px;
+  }
+  
+  .btn-register:hover {
+    background-color: #81c784; /* Hijau yang lebih cerah */
+    color: white;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 10px;
+  }

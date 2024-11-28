@@ -75,38 +75,10 @@
               </a>
             </li>
             @endif
-            <li class="nav-small-cap">
-              <iconify-icon icon="solar:menu-dots-bold-duotone" class="nav-small-cap-icon fs-5"></iconify-icon>
-              <span class="hide-menu">Apps</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link sidebar-link success-hover-bg" href="/messages/inbox" aria-expanded="false">
-                <span class="aside-icon p-2 bg-success-subtle rounded-1">
-                    <i class="ti ti-inbox fs-5"></i>
-                </span>
-                <span class="hide-menu ps-1">Email</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link sidebar-link success-hover-bg" href="/kategoris" aria-expanded="false">
-                <span class="aside-icon p-2 bg-success-subtle rounded-1">
-                    <iconify-icon icon="solar:list-check-line-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu ps-1">Kategori</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link sidebar-link success-hover-bg" href="/bukus" aria-expanded="false">
-                <span class="aside-icon p-2 bg-success-subtle rounded-1">
-                    <iconify-icon icon="solar:book-2-line-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu ps-1">Buku</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
+            {{-- <li class="nav-small-cap">
               <iconify-icon icon="solar:menu-dots-bold-duotone" class="nav-small-cap-icon fs-5"></iconify-icon>
               <span class="hide-menu">Unduh Laporan</span>
-            </li>
+            </li> --}}
             {{-- <li class="sidebar-item">
               <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                 <button id="btnGroupVerticalDrop1" type="button"
