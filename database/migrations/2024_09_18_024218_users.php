@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('USERNAME', 60)->unique();
+            // $table->string('USERNAME', 60)->unique();
             $table->string('NO_HP', 30)->nullable();
             $table->string('WA', 30)->nullable();
-            $table->string('PIN', 30)->nullable();
+            // $table->string('PIN', 30)->nullable();
             $table->unsignedInteger('ID_JENIS_USER');
             $table->string('STATUS_USER', 30)->nullable()->default('active');
             $table->string('DELETE_MARK', 1)->default('0');

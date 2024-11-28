@@ -42,7 +42,7 @@
               <thead class="header-item">
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Username</th>
+                <th>Phone</th>
                 <th>Email</th>
                 <th>Aksi</th>
               </thead>
@@ -64,7 +64,7 @@
                     </div>
                   </td>
                   <td>
-                    <span class="usr-email-addr" data-email="adams@mail.com">{{ $user->USERNAME }}</span>
+                    <span class="usr-email-addr" data-email="adams@mail.com">{{ $user->NO_HP }}</span>
                   </td>
                   <td>
                     <span class="usr-location" data-location="Boston, USA">{{ $user->email }}</span>

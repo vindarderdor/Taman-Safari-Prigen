@@ -10,14 +10,13 @@ class Content extends Model
     use HasFactory;
 
     protected $table = 'contents';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID_CONTENT';
     
     protected $fillable = [
-        'place',
-        'title',
-        'title2',
-        'description',
-        'image'
+        'TITLE',
+        'TITLE2',
+        'DESCRIPSION',
+        'IMAGE'
     ];
 
     protected $dates = [

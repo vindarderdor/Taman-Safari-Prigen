@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'NAMA_USER' => 'it',
-            'USERNAME' => 'it',
+            // 'USERNAME' => 'it',
             'email' => 'it@gmail.com',
             'password' => Hash::make('password'),
             'ID_JENIS_USER' => $adminRoleId,
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'NAMA_USER' => 'alim',
-            'USERNAME' => 'alimm',
+            // 'USERNAME' => 'alimm',
             'email' => 'alim@gmail.com',
             'password' => Hash::make('password'),
             'ID_JENIS_USER' => $regularRoleId,

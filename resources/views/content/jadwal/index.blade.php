@@ -6,13 +6,7 @@
         <div class="card card-body">
           <div class="row">
             <div class="col-md-2 col-xl-1">
-                <h4 class="fw-semibold mb-0">Buku</h4>
-            </div>
-            <div
-              class="col-md-2 col-xl-11 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-              <a href="{{ route('bukus.create') }}" id="btn-add-contact" class="btn btn-primary d-flex align-items-center">
-                <i class="ti ti-users text-white me-1 fs-5"></i> Tambah Buku
-              </a>
+                <h4 class="fw-semibold mb-0">Jadwal</h4>
             </div>
           </div>
         </div>
@@ -22,46 +16,33 @@
             <table id="zero_config"
               class="table border table-striped table-bordered text-nowrap align-middle">
               <thead class="header-item">
-                <th>ID</th>
-                <th>judul</th>
-                <th>kode</th>
-                <th>Pengarang</th>
+                <th>Hari</th>
+                <th>Jam Buka</th>
+                <th>Jam Tutup</th>
+                <th>Update At</th>
                 <th>Aksi</th>
               </thead>
               <tbody>
                 <!-- start row -->
-                @foreach($bukus as $buku)
+                @foreach($jadwals as $jadwal)
                 <tr class="search-items">
                     <td>
-                      <span class="usr-email-addr">{{ $buku->id }}</span>
+                      <span class="usr-email-addr">{{ $jadwal->HARI }}</span>
                     </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div class="ms-3">
-                        <div class="user-meta-info">
-                          <h6 class="user-name mb-0" data-name="Emma Adams">{{ $buku->judul }}</h6>
-                          <span class="user-work fs-3" data-occupation="Web Developer">{{ $buku->kategori->nama }}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="usr-email-addr" data-email="adams@mail.com">{{ $buku->kode }}</span>
-                  </td>
-                  <td>
-                    <span class="usr-location" data-location="Boston, USA">{{ $buku->pengarang }}</span>
-                  </td>
-                  <td>
-                    <span class="usr-ph-no" data-phone="+1 (070) 123-4567">
-                        <a href="{{ route('bukus.edit', $buku->id) }}" class="text-primary edit">
-                            <i class="ti ti-pencil fs-5"></i></a>
-                        <form action="{{ route('bukus.destroy', $buku->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-primary edit">
-                                <i class="ti ti-trash fs-5"></i></button>
-                        </form></span>
-                  </td>
+                    <td>
+                      <span class="usr-email-addr">{{ $jadwal->JAM_BUKA }}</span>
+                    </td>
+                    <td>
+                      <span class="usr-email-addr">{{ $jadwal->JAM_TUTUP }}</span>
+                    </td>
+                    <td>
+                      <span class="usr-email-addr">{{ $jadwal->updated_at}}</span>
+                    </td>
+                    <td>
+                        <span class="usr-ph-no" data-phone="+1 (070) 123-4567">
+                            <a href="{{ route('jadwals.edit', $jadwal->ID_JADWAL) }}" class="text-primary edit">
+                                <i class="ti ti-pencil fs-5"></i></a>
+                    </td>
                 </tr>
                 @endforeach
               </tbody>
@@ -74,7 +55,7 @@
 
 @section('content')
 <h1>book Management</h1>
-<a href="{{ route('bukus.create') }}" class="btn btn-primary">Create book</a>
+<a href="{{ route('jadwals.create') }}" class="btn btn-primary">Create book</a>
 <table class="table">
     <thead>
         <tr>

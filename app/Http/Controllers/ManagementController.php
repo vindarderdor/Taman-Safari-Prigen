@@ -43,7 +43,6 @@ class ManagementController extends Controller
     {
         $id = DB::table('users')->insertGetId([
             'NAMA_USER' => $request->input('name'),
-            'USERNAME' => $request->input('username'),
             'EMAIL' => $request->input('email'),
             'PASSWORD' => bcrypt($request->input('password')),
             'ID_JENIS_USER' => $request->input('role'),
@@ -77,7 +76,6 @@ class ManagementController extends Controller
             ->where('ID_USER', $id)
             ->update([
                 'NAMA_USER' => $request->input('name'),
-                'USERNAME' => $request->input('username'),
                 'EMAIL' => $request->input('email'),
                 'ID_JENIS_USER' => $request->input('role'),
                 'UPDATE_BY' => auth()->user()->USERNAME,
