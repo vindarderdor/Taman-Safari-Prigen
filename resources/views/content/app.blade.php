@@ -127,16 +127,17 @@
             <!-- start notification Dropdown -->
             <!-- ------------------------------- -->
             <li class="nav-item dropdown">
-              <a class="nav-link position-relative nav-icon-hover" href="javascript:void(0)" id="drop2"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="nav-icon-hover-bg rounded-circle ">
-                  <iconify-icon icon="bi:cart"></iconify-icon>
+              <a class="nav-link position-relative nav-icon-hover" href="{{ route('cart.index') }}">
+                <div class="nav-icon-hover-bg rounded-circle">
+                    <iconify-icon icon="bi:cart"></iconify-icon>
                 </div>
                 <div class="pulse">
-                  <span class="heartbit border-success"></span>
-                  <span class="point text-bg-success"></span>
+                    <span class="heartbit border-success"></span>
+                    <span class="point text-bg-success">
+                        {{ Session::has('cart') ? count(Session::get('cart')) : 0 }}
+                    </span>
                 </div>
-              </a>
+            </a>
               {{-- <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                 <div class="d-flex align-items-center px-7 py-3">
       <h3 class="mb-0 fs-5">Notifications</h3>
