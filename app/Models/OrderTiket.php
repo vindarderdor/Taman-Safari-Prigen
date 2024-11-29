@@ -30,4 +30,9 @@ class OrderTiket extends Model
     {
         return $this->belongsTo(Jadwal::class, 'ID_JADWAL');
     }
+
+    public function content()
+    {
+        return $this->belongsTo(Content::class, 'ID_TIKET', 'ID_KONTEN');
+    }
 }

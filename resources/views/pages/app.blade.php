@@ -19,6 +19,7 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('') }}landing/lib/animate/animate.min.css" rel="stylesheet">
@@ -75,35 +76,57 @@
     </div> --}}
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="/" class="navbar-brand p-0">
-            <img class="img-fluid me-3" src="{{ asset('') }}landing/img/icon/icon-10.png" alt="Icon">
-            {{-- <h1 class="m-0 text-primary">Zoofari</h1> --}}
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
-            <div class="navbar-nav ms-auto">
-                <a href="/landing-page" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
-                <a href="/jadwal" class="nav-item nav-link">Jadwal</a>
-                <a href="service.html" class="nav-item nav-link">Event</a>
-                {{-- <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="animal.html" class="dropdown-item">Our Animals</a>
-                        <a href="membership.html" class="dropdown-item">Membership</a>
-                        <a href="visiting.html" class="dropdown-item">Visiting Hours</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div> --}}
-                {{-- <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
+    <div class="sticky-top">
+        <!-- Top Bar -->
+        <div class="top-bar py-1 px-4 d-flex justify-content-between align-items-center">
+            <div class="left-menu">
+                <a href="/seller" class="me-3">Our Location</a>
+                <span>Ikuti Kami di</span>
+                <a href="https://www.facebook.com/tamansafariprigenjatim" target="_blank" class="me-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/tamansafari.prigen/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
             </div>
-            <a href="/pesan" class="btn btn-primary">Buy Ticket<i class="fa fa-arrow-right ms-3"></i></a>
+            <div class="right-menu d-flex align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Bahasa Indonesia
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="#">Bahasa Indonesia</a></li>
+                    </ul>
+                </div>
+                @if (!Auth::check())
+                    <a href="/login" class="me-3 small"><i class="fa fa-user"></i> Login</a>
+                @else
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-link small text-decoration-none me-3">
+                            <i class="fa fa-sign-out-alt"></i> Logout
+                        </button>
+                    </form>
+                @endif
+            </div>
         </div>
-    </nav>
+        
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="/" class="navbar-brand p-0">
+                <img class="img-fluid me-3" src="{{ asset('') }}landing/img/logo2.png" alt="Icon">
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="/about" class="nav-item nav-link">About</a>
+                    <a href="/jadwal" class="nav-item nav-link">Jadwal</a>
+                    <a href="service.html" class="nav-item nav-link">Event</a>
+                </div>
+                <a href="/pesan" class="btn btn-primary">Buy Ticket<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </nav>
+    </div>
     <!-- Navbar End -->
     @yield('content')
 
