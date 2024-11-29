@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ManagementController;use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\JadwalController;
@@ -70,6 +71,11 @@ Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard'
     Route::get('pesan', [PesanController::class, 'index'])->name('pesan.index');
     Route::resource('tikets', ContentController::class);
     Route::resource('jadwals', JadwalController::class);
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index'); // Halaman keranjang
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add'); // Tambahkan item
+    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update'); // Update jumlah
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove'); // Hapus item
 
     //posts
     // Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
