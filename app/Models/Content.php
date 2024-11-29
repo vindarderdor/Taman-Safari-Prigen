@@ -23,4 +23,9 @@ class Content extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function orderTikets()
+    {
+        return $this->hasMany(OrderTiket::class, 'ID_TIKET', 'ID_KONTEN');
+    }
 }

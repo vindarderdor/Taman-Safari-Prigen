@@ -41,7 +41,7 @@
     <nav class="navbar navbar-expand-lg p-0">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="/landing-page">
+          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="/">
             <div class="nav-icon-hover-bg rounded-circle ">
               <iconify-icon icon="solar:backspace-line-duotone" class="fs-7 text-dark"></iconify-icon>
             </div>

@@ -8,13 +8,16 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\testcontroller;
 
 Route::get('/', function () {
-    return view('guest');
+    return view('pages.index');
 });
+
 Route::get('/jadwal', function () {
     return view('pages.jadwal');
 });
 
-Route::get('/landing-page', [AuthController::class, 'landing'])->name('landing-page');
+Route::get('/about', function () {
+    return view('pages.about');
+});
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
