@@ -80,7 +80,7 @@
         <!-- Top Bar -->
         <div class="top-bar py-1 px-4 d-flex justify-content-between align-items-center">
             <div class="left-menu">
-                <a href="/seller" class="me-3">Our Location</a>
+                <a href="https://goo.gl/maps/XwdyTKuF33EJpGJMA" class="me-3">Our Location</a>
                 <span>Ikuti Kami di</span>
                 <a href="https://www.facebook.com/tamansafariprigenjatim" target="_blank" class="me-2"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/tamansafari.prigen/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>

@@ -21,6 +21,7 @@ class JadwalController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $request->validate([
             'JAM_BUKA' => 'required|date_format:H:i',
             'JAM_TUTUP' => 'required|date_format:H:i|after:JAM_BUKA',
