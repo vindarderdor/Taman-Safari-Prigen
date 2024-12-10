@@ -76,8 +76,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update'); // Update jumlah
-    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove'); // Hapus item
+    // Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update'); // Update jumlah
+    // Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove'); // Hapus item
 
     //posts
     // Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

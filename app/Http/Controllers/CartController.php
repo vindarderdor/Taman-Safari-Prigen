@@ -41,6 +41,15 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Item added to cart successfully!');
     }
 
+    public function update(Request $request, $id)
+    {
+        $cartItem = CartItem::findOrFail($id);
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+
+        return response()->json(['success' => true]);
+    }
+
     public function remove($id)
     {
         CartItem::destroy($id);

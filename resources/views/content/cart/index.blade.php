@@ -26,10 +26,10 @@
                                         <h4 style="font-family: 'Mikado', sans-serif; color: #274E13;">{{ $item->content->TITLE }}</h4>
                                         <p class="text-muted">{{ Str::limit($item->content->DESCRIPSION, 100) }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="input-group" style="max-width: 150px;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->content->ID_KONTEN }}, -1)" style="border-color: #274E13;">-</button>
-                                                <input type="text" class="form-control text-center" value="{{ $item->quantity }}" id="quantity-{{ $item->content->ID_KONTEN }}" readonly style="border-color: #274E13;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->content->ID_KONTEN }}, 1)" style="border-color: #274E13;">+</button>
+                                            <div class="input-group" style="max-width: 200px;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->id }}, -1)" style="border-color: #274E13;">-</button>
+                                                <input type="text" class="form-control text-center" value="{{ $item->quantity }}" id="quantity-{{ $item->id }}" readonly style="border-color: #274E13;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->id }}, 1)" style="border-color: #274E13;">+</button>
                                             </div>
                                             <p class="h5 mb-0" style="color: #90C659;">Rp {{ number_format($item->content->HARGA * $item->quantity, 0, ',', '.') }}</p>
                                         </div>
