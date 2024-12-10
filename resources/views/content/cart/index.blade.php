@@ -26,10 +26,10 @@
                                         <h4 style="font-family: 'Mikado', sans-serif; color: #274E13;">{{ $item->content->TITLE }}</h4>
                                         <p class="text-muted">{{ Str::limit($item->content->DESCRIPSION, 100) }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="input-group" style="max-width: 150px;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->content->ID_KONTEN }}, -1)" style="border-color: #274E13;">-</button>
-                                                <input type="text" class="form-control text-center" value="{{ $item->quantity }}" id="quantity-{{ $item->content->ID_KONTEN }}" readonly style="border-color: #274E13;">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->content->ID_KONTEN }}, 1)" style="border-color: #274E13;">+</button>
+                                            <div class="input-group" style="max-width: 200px;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->id }}, -1)" style="border-color: #274E13;">-</button>
+                                                <input type="text" class="form-control text-center" value="{{ $item->quantity }}" id="quantity-{{ $item->id }}" readonly style="border-color: #274E13;">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ $item->id }}, 1)" style="border-color: #274E13;">+</button>
                                             </div>
                                             <p class="h5 mb-0" style="color: #90C659;">Rp {{ number_format($item->content->HARGA * $item->quantity, 0, ',', '.') }}</p>
                                         </div>
@@ -61,9 +61,9 @@
                                 <strong>Total</strong>
                                 <strong style="color: #90C659;">Rp {{ number_format($total, 0, ',', '.') }}</strong>
                             </div>
-                            <button class="btn btn-primary w-100 mt-3" style="background-color: #274E13; border: none; padding: 15px; font-weight: bold; font-size: 16px;">
+                            <a href="{{ route('payment.index') }}" class="btn btn-primary w-100 mt-3" style="background-color: #274E13; border: none; padding: 15px; font-weight: bold; font-size: 16px;">
                                 Lanjutkan ke Pembayaran
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -73,26 +73,20 @@
 
     <script>
         function updateQuantity(itemId, change) {
-            const quantityInput = document.getElementById(`quantity-${itemId}`);
-            let newQuantity = parseInt(quantityInput.value) + change;
-            if (newQuantity > 0) {
-                // Send AJAX request to update quantity
-                fetch(`/cart/update/${itemId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ quantity: newQuantity })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        quantityInput.value = newQuantity;
-                        location.reload(); // Reload to update prices
-                    }
-                });
-            }
+            fetch(`/cart/update/${itemId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ quantity: change })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                }
+            });
         }
 
         function removeItem(itemId) {
