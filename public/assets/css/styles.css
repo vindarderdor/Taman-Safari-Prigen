@@ -28232,3 +28232,19 @@ body div:where(.swal2-icon).swal2-success [class^="swal2-success-line"] {
   height: 200%;
   margin: 10px 0;
 }
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Transparan */
+  height: 300px; /* Atur sesuai kebutuhan */
+  width: 100%; /* Pastikan melebar ke seluruh kolom */
+  overflow: hidden; /* Hindari elemen keluar */
+}
+
+.centered-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; /* Gambar diatur sesuai rasio */
+}

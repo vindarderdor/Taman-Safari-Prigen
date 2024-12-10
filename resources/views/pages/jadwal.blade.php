@@ -23,10 +23,17 @@
                 <div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
                     <h2 class="text-white mb-5">Jadwal</h2>
                     <ul class="list-group list-group-flush">
-                        @foreach (['Senin' => '09:00 - 18:00', 'Selasa' => '09:00 - 18:00', 'Rabu' => '09:00 - 18:00', 'Kamis' => '09:00 - 18:00'] as $day => $hours)
+                        {{-- @foreach (['Senin' => '09:00 - 18:00', 'Selasa' => '09:00 - 18:00', 'Rabu' => '09:00 - 18:00', 'Kamis' => '09:00 - 18:00'] as $day => $hours)
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>{{ $day }}</span>
                                 <span>{{ $hours }}</span>
+                            </li>
+                        @endforeach --}}
+                        @foreach ($jadwals as $jadwal)
+                            <li class="list-group-item">
+                                <span>{{ $jadwal->HARI }}</span>
+                                <span>{{ \Carbon\Carbon::createFromFormat('H:i:s', $jadwal->JAM_BUKA)->format('H:i') }} - 
+                                    {{ \Carbon\Carbon::createFromFormat('H:i:s', $jadwal->JAM_TUTUP)->format('H:i') }}</span>
                             </li>
                         @endforeach
                     </ul>

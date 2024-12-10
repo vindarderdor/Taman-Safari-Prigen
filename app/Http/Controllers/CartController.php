@@ -2,64 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CartItem;
+use App\Models\Content;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
-    // Tampilkan halaman keranjang
     public function index()
     {
-        $cart = Session::get('cart', []); // Ambil keranjang dari sesi
-        return view('content.cart.index', compact('cart'));
+        $cartItems = CartItem::with('content')->get();
+        $total = $cartItems->sum(function ($item) {
+            return $item->content->HARGA * $item->quantity;
+        });
+
+        return view('content.cart.index', compact('cartItems', 'total'));
     }
 
-    // Tambahkan tiket ke keranjang
     public function add(Request $request)
     {
-        $cart = Session::get('cart', []);
-
-        $id = $request->id;
-        if (isset($cart[$id])) {
-            // Jika tiket sudah ada, tambahkan jumlah
-            $cart[$id]['jumlah'] += $request->jumlah;
-        } else {
-            // Jika tiket belum ada, tambahkan tiket baru
-            $cart[$id] = [
-                'id' => $id,
-                'title' => $request->title,
-                'harga' => $request->harga,
-                'jumlah' => $request->jumlah,
-            ];
-        }
-
-        Session::put('cart', $cart); // Simpan ke sesi
-        return redirect()->route('cart.index')->with('success', 'Tiket berhasil ditambahkan ke keranjang!');
+        // Validate the request
+        $request->validate([
+            'ticket_id' => 'required|exists:contents,ID_KONTEN',
+            'quantity' => 'required|integer|min:1'
+        ]);
+    
+        // Find the content using the correct column name
+        $content = Content::where('ID_KONTEN', $request->ticket_id)->firstOrFail();
+        
+        // Create or update cart item
+        CartItem::updateOrCreate(
+            ['content_id' => $content->ID_KONTEN],
+            [
+                'quantity' => DB::raw('COALESCE(quantity, 0) + ' . $request->quantity)
+            ]
+        );
+    
+        return redirect()->route('cart.index')->with('success', 'Item added to cart successfully!');
     }
 
-    // Update jumlah tiket di keranjang
-    public function update(Request $request)
+    public function remove($id)
     {
-        $cart = Session::get('cart', []);
-        $id = $request->id;
+        CartItem::destroy($id);
 
-        if (isset($cart[$id])) {
-            $cart[$id]['jumlah'] = $request->jumlah; // Perbarui jumlah
-        }
-
-        Session::put('cart', $cart);
-        return back()->with('success', 'Jumlah tiket berhasil diperbarui!');
-    }
-
-    // Hapus tiket dari keranjang
-    public function remove(Request $request)
-    {
-        $cart = Session::get('cart', []);
-        $id = $request->id;
-
-        unset($cart[$id]); // Hapus tiket dari sesi
-
-        Session::put('cart', $cart);
-        return back()->with('success', 'Tiket berhasil dihapus dari keranjang!');
+        return response()->json(['success' => true]);
     }
 }

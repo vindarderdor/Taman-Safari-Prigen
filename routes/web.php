@@ -6,20 +6,16 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ManagementController;use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\testcontroller;
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+//pages
+Route::get('/', [PagesController::class, 'index']);
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/jadwal', [PagesController::class, 'jadwal']);
 
-Route::get('/jadwal', function () {
-    return view('pages.jadwal');
-});
-
-Route::get('/about', function () {
-    return view('pages.about');
-});
-
+//auth
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -27,7 +23,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/users', [ManagementController::class, 'indexUser'])->name('management.users.index');
     Route::get('/users/create', [ManagementController::class, 'createUser'])->name('management.users.create');
@@ -72,8 +68,14 @@ Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard'
     Route::resource('tikets', ContentController::class);
     Route::resource('jadwals', JadwalController::class);
 
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index'); // Halaman keranjang
-    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add'); // Tambahkan item
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index'); // Halaman keranjang// Rute ke halaman detail tiket
+    Route::get('/tickets/{id}', [TicketController::class, 'show'])->name('tickets.show');
+    
+    // Rute untuk menambah tiket ke keranjang
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update'); // Update jumlah
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove'); // Hapus item
 

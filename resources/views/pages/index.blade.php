@@ -174,34 +174,13 @@
                 <div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
                     <h1 class="display-12 text-white mb-5">Visiting Hours</h1>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span>Senin</span>
-                            <span>09:00 - 18:00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>Selasa</span>
-                            <span>09:00 - 18:00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>Rabu</span>
-                            <span>09:00 - 18:00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>Kamis</span>
-                            <span>09:00 - 18:00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>Jumat</span>
-                            <span>09:00 - 18:00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>Sabtu</span>
-                            <span>09:00 - 18:00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>Minggu</span>
-                            <span>Tutup</span>
-                        </li>
+                        @foreach ($jadwals as $jadwal)
+                            <li class="list-group-item">
+                                <span>{{ $jadwal->HARI }}</span>
+                                <span>{{ \Carbon\Carbon::createFromFormat('H:i:s', $jadwal->JAM_BUKA)->format('H:i') }} - 
+                                    {{ \Carbon\Carbon::createFromFormat('H:i:s', $jadwal->JAM_TUTUP)->format('H:i') }}</span>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 {{-- <div class="col-md-6 text-light wow fadeIn" data-wow-delay="0.5s">

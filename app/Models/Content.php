@@ -10,12 +10,13 @@ class Content extends Model
     use HasFactory;
 
     protected $table = 'contents';
-    protected $primaryKey = 'ID_CONTENT';
+    protected $primaryKey = 'ID_KONTEN';
     
     protected $fillable = [
         'TITLE',
         'TITLE2',
         'DESCRIPSION',
+        'HARGA',
         'IMAGE'
     ];
 
@@ -28,4 +29,10 @@ class Content extends Model
     {
         return $this->hasMany(OrderTiket::class, 'ID_TIKET', 'ID_KONTEN');
     }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'content_id', 'ID_KONTEN');
+    }
+
 }

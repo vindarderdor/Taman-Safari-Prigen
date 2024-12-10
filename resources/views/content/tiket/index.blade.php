@@ -25,6 +25,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Deskripsi</th>
+                <th>Harga</th>
                 <th>img</th>
                 <th>Aksi</th>
               </thead>
@@ -40,6 +41,9 @@
                     </td>
                     <td>
                         <span class="usr-email-addr" data-email="adams@mail.com">{{ $tiket->DESCRIPSION }}</span>
+                    </td>
+                    <td>
+                        <span class="usr-email-addr" data-email="adams@mail.com">{{ $tiket->HARGA}}</span>
                     </td>
                     <td>
                         <span class="usr-location" data-location="Boston, USA">{{ $tiket->IMAGE }}</span>

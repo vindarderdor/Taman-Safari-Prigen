@@ -25,6 +25,7 @@ class ContentController extends Controller
             'TITLE' => 'required|string|max:255',
             'TITLE2' => 'nullable|string|max:255',
             'DESCRIPSION' => 'nullable|string',
+            'HARGA' => 'nullable',
             'IMAGE' => 'nullable|string|max:255',
         ]);
 
