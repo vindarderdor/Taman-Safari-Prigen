@@ -44,7 +44,7 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         $cartItem = CartItem::findOrFail($id);
-        $cartItem->quantity = $request->quantity;
+        $cartItem->quantity = max(1, $cartItem->quantity + $request->quantity);
         $cartItem->save();
 
         return response()->json(['success' => true]);

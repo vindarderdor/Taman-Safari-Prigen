@@ -7,6 +7,7 @@ use App\Http\Controllers\ManagementController;use App\Http\Controllers\ContentCo
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\testcontroller;
 
@@ -78,6 +79,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
     // Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update'); // Update jumlah
     // Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove'); // Hapus item
+
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+    Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
 
     //posts
     // Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

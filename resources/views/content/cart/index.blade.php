@@ -61,9 +61,9 @@
                                 <strong>Total</strong>
                                 <strong style="color: #90C659;">Rp {{ number_format($total, 0, ',', '.') }}</strong>
                             </div>
-                            <button class="btn btn-primary w-100 mt-3" style="background-color: #274E13; border: none; padding: 15px; font-weight: bold; font-size: 16px;">
+                            <a href="{{ route('payment.index') }}" class="btn btn-primary w-100 mt-3" style="background-color: #274E13; border: none; padding: 15px; font-weight: bold; font-size: 16px;">
                                 Lanjutkan ke Pembayaran
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -73,26 +73,20 @@
 
     <script>
         function updateQuantity(itemId, change) {
-            const quantityInput = document.getElementById(`quantity-${itemId}`);
-            let newQuantity = parseInt(quantityInput.value) + change;
-            if (newQuantity > 0) {
-                // Send AJAX request to update quantity
-                fetch(`/cart/update/${itemId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ quantity: newQuantity })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        quantityInput.value = newQuantity;
-                        location.reload(); // Reload to update prices
-                    }
-                });
-            }
+            fetch(`/cart/update/${itemId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ quantity: change })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                }
+            });
         }
 
         function removeItem(itemId) {
