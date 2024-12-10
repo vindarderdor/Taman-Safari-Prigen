@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('TITLE');
             $table->string('TITLE2')->nullable();
             $table->text('DESCRIPSION')->nullable();
+            $table->integer('HARGA')->nullable();
             $table->string('IMAGE')->nullable();
             $table->timestamps();
         });

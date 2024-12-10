@@ -36,6 +36,13 @@
               </div>
               <div class="mb-4 row align-items-center">
                 <label for="exampleInputText2"
+                  class="form-label fw-semibold col-sm-3 col-form-label">Harga</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="kode" name="HARGA" required>
+                </div>
+              </div>
+              <div class="mb-4 row align-items-center">
+                <label for="exampleInputText2"
                   class="form-label fw-semibold col-sm-3 col-form-label">IMG</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="pengarang" name="IMAGE" required>
