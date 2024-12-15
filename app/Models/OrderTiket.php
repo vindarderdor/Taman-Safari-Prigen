@@ -18,7 +18,8 @@ class OrderTiket extends Model
         'ID_JADWAL',
         'JUMLAH',
         'TOTAL_HARGA',
-        'payment_status'
+        'payment_status',
+        'snap_token'
     ];
 
     public function user()

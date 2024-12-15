@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\CartItem;
 use App\Models\Content;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -13,7 +13,7 @@ class CartController extends Controller
     {
         $cartItems = CartItem::with('content')->get();
         $total = $cartItems->sum(function ($item) {
-            return $item->content->HARGA * $item->quantity;
+            return $item->price * $item->quantity;
         });
 
         return view('content.cart.index', compact('cartItems', 'total'));
@@ -21,31 +21,56 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        // Validate the request
         $request->validate([
             'ticket_id' => 'required|exists:contents,ID_KONTEN',
-            'quantity' => 'required|integer|min:1'
+            'adult_quantity' => 'required|integer|min:0',
+            'child_quantity' => 'required|integer|min:0',
+            'booking_date' => 'required|date|after_or_equal:today'
         ]);
-    
-        // Find the content using the correct column name
-        $content = Content::where('ID_KONTEN', $request->ticket_id)->firstOrFail();
+
+        if ($request->adult_quantity + $request->child_quantity === 0) {
+            return redirect()->back()->with('error', 'Please select at least one ticket.');
+        }
+
+        $content = Content::findOrFail($request->ticket_id);
         
-        // Create or update cart item
-        CartItem::updateOrCreate(
-            ['content_id' => $content->ID_KONTEN],
-            [
-                'quantity' => DB::raw('COALESCE(quantity, 0) + ' . $request->quantity)
-            ]
-        );
-    
-        return redirect()->route('cart.index')->with('success', 'Item added to cart successfully!');
+        // Parse the booking date and ensure it's in UTC
+        $bookingDate = Carbon::parse($request->booking_date)->startOfDay()->utc();
+
+        if ($request->adult_quantity > 0) {
+            CartItem::create([
+                'content_id' => $content->ID_KONTEN,
+                'quantity' => $request->adult_quantity,
+                'booking_date' => $bookingDate,
+                'ticket_type' => 'adult',
+                'price' => $content->HARGA_ADULT
+            ]);
+        }
+
+        if ($request->child_quantity > 0) {
+            CartItem::create([
+                'content_id' => $content->ID_KONTEN,
+                'quantity' => $request->child_quantity,
+                'booking_date' => $bookingDate,
+                'ticket_type' => 'child',
+                'price' => $content->HARGA_CHILD
+            ]);
+        }
+
+        return redirect()->route('cart.index')->with('success', 'Items added to cart successfully!');
     }
 
     public function update(Request $request, $id)
     {
         $cartItem = CartItem::findOrFail($id);
-        $cartItem->quantity = max(1, $cartItem->quantity + $request->quantity);
-        $cartItem->save();
+        $newQuantity = max(0, $cartItem->quantity + $request->quantity);
+
+        if ($newQuantity === 0) {
+            $cartItem->delete();
+        } else {
+            $cartItem->quantity = $newQuantity;
+            $cartItem->save();
+        }
 
         return response()->json(['success' => true]);
     }
@@ -57,3 +82,4 @@ class CartController extends Controller
         return response()->json(['success' => true]);
     }
 }
+
