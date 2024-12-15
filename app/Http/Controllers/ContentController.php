@@ -25,8 +25,8 @@ class ContentController extends Controller
             'TITLE' => 'required|string|max:255',
             'TITLE2' => 'nullable|string|max:255',
             'DESCRIPSION' => 'nullable|string',
-            'HARGA_ADULT' => 'nullable',
-            'HARGA_CHILD' => 'nullable',
+            'HARGA_ADULT' => 'nullable|numeric',
+            'HARGA_CHILD' => 'nullable|numeric',
             'IMAGE' => 'nullable|string|max:255',
         ]);
 
