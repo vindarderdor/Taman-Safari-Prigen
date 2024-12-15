@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class CartItem extends Model
 {
     use HasFactory;
-    protected $fillable = ['content_id', 'quantity'];
+    protected $fillable = ['content_id', 'quantity', 'booking_date', 'ticket_type', 'price'];
+
+    protected $casts = [
+        'booking_date' => 'date',
+    ];
 
     public function content()
     {

@@ -12,6 +12,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('content_id');
             $table->unsignedInteger('quantity')->default(1);
+            $table->enum('ticket_type', ['adult', 'child']);
+            $table->integer('price');
+            $table->date('booking_date')->nullable();
             $table->timestamps();
 
             $table->foreign('content_id')

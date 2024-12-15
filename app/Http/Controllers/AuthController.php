@@ -51,7 +51,7 @@ class AuthController extends Controller
         ]);
         if(Auth::attempt($validate)){
             $request->session()->regenerate();
-            return redirect()->intended('index');
+            return redirect()->intended('/');
         }
         Session::flash('failed','Account not found');
     }
