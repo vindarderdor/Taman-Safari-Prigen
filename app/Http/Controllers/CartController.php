@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\CartItem;
 use App\Models\Content;
 use Carbon\Carbon;
@@ -39,6 +40,7 @@ class CartController extends Controller
 
         if ($request->adult_quantity > 0) {
             CartItem::create([
+                'user_id' => Auth::id(),
                 'content_id' => $content->ID_KONTEN,
                 'quantity' => $request->adult_quantity,
                 'booking_date' => $bookingDate,
@@ -49,6 +51,7 @@ class CartController extends Controller
 
         if ($request->child_quantity > 0) {
             CartItem::create([
+                'user_id' => Auth::id(),
                 'content_id' => $content->ID_KONTEN,
                 'quantity' => $request->child_quantity,
                 'booking_date' => $bookingDate,

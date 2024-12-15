@@ -77,9 +77,12 @@
                                 <strong>Total</strong>
                                 <strong style="color: #90C659;">Rp {{ number_format($total, 0, ',', '.') }}</strong>
                             </div>
-                            <a href="{{ route('payment.index') }}" class="btn btn-primary w-100 mt-3" style="background-color: #274E13; border: none; padding: 15px; font-weight: bold; font-size: 16px;">
-                                Lanjutkan ke Pembayaran
-                            </a>
+                            <form action="{{ route('checkout.process') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary w-100 mt-3" style="background-color: #274E13; border: none; padding: 15px; font-weight: bold; font-size: 16px;">
+                                    Lanjutkan ke Pembayaran
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ManagementController;use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\JadwalController;
@@ -82,6 +83,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
     Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
+    
+    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::get('/checkout/{transaksi}', [CheckoutController::class, 'show'])->name('checkout.show');
+    Route::get('/checkout/{transaksi}/success', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout/{transaksi}/failed', [CheckoutController::class, 'failed'])->name('checkout.failed');
+
+    // Route::get('/transactions', [TransactionController::class, 'index'])->name("transactions");
 
     //posts
     // Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
