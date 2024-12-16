@@ -15,8 +15,8 @@ return new class extends Migration
             $table->increments('ID_KONTEN');
             $table->string('TITLE');
             $table->text('DESCRIPSION')->nullable();
-            $table->decimal('HARGA_ADULT', 10, 2)->nullable(); // Tipe decimal
-            $table->decimal('HARGA_CHILD', 10, 2)->nullable(); // Tipe decimal
+            $table->integer('HARGA_ADULT')->nullable();
+            $table->integer('HARGA_CHILD')->nullable();
             $table->string('IMAGE')->nullable();
             $table->timestamps();
         });

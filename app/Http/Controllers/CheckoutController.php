@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CartItem;
 use App\Models\Transaksi;
+use App\Models\PurchasedTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Midtrans\Config;
@@ -34,8 +35,18 @@ class CheckoutController extends Controller
         ]);
 
         foreach ($cartItems as $item) {
-            $item->transaksi_id = $transaksi->id;
-            $item->save();
+            $ticketNumber = $this->generateTicketNumber($item->content);
+            
+            PurchasedTicket::create([
+                'user_id' => Auth::user()->ID_USER,
+                'content_id' => $item->content_id,
+                'transaksi_id' => $transaksi->id,
+                'ticket_type' => $item->ticket_type,
+                'quantity' => $item->quantity,
+                'price' => $item->price,
+                'booking_date' => $item->booking_date,
+                'ticket_number' => $ticketNumber,
+            ]);
         }
 
         $params = [
@@ -63,6 +74,13 @@ class CheckoutController extends Controller
         $transaksi->save();
 
         return redirect()->route('checkout.show', ['transaksi' => $transaksi->id]);
+    }
+
+    private function generateTicketNumber($content)
+    {
+        $prefix = strtoupper(substr($content->TITLE, 0, 3));
+        $uniqueNumber = str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
+        return $prefix . $uniqueNumber;
     }
 
     public function show($id)

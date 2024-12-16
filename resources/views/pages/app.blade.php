@@ -122,6 +122,7 @@
                     <a href="/about" class="nav-item nav-link">About</a>
                     <a href="/jadwal" class="nav-item nav-link">Jadwal</a>
                     <a href="service.html" class="nav-item nav-link">Event</a>
+                    <a href="/purchased-tickets" class="nav-item nav-link">My Tickets</a>
                 </div>
                 <a href="/pesan" class="btn btn-primary">Buy Ticket<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
