@@ -23,18 +23,20 @@ class ContentController extends Controller
         // dd($request->all());
         $request->validate([
             'TITLE' => 'required|string|max:255',
-            'TITLE2' => 'nullable|string|max:255',
+            // 'TITLE2' => 'nullable|string|max:255',
             'DESCRIPSION' => 'nullable|string',
             'HARGA_ADULT' => 'nullable|numeric',
             'HARGA_CHILD' => 'nullable|numeric',
             'IMAGE' => 'nullable|string|max:255',
         ]);
 
+        
         // if ($request->hasFile('IMAGE')) {
-        //     $validated['IMAGE'] = $request->file('IMAGE')->store('images', 'public');
-        // }
-
-        $data = $request->all();
+            //     $validated['IMAGE'] = $request->file('IMAGE')->store('images', 'public');
+            // }
+            
+            $data = $request->all();
+            // dd($data);
         Content::create($data);
 
         return redirect()->route('tikets.index')->with('success', 'Content created successfully!');

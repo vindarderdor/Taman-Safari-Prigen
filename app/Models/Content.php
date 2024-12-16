@@ -16,7 +16,8 @@ class Content extends Model
         'TITLE',
         'TITLE2',
         'DESCRIPSION',
-        'HARGA',
+        'HARGA_ADULT',
+        'HARGA_CHILD',
         'IMAGE'
     ];
 
@@ -33,6 +34,10 @@ class Content extends Model
     public function cartItems()
     {
         return $this->hasMany(CartItem::class, 'content_id', 'ID_KONTEN');
+    }
+    public function PurchasedTicket()
+    {
+        return $this->hasMany(PurchasedTicket::class);
     }
 
 }

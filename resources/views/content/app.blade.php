@@ -96,8 +96,11 @@
         @if (auth()->user()->ID_JENIS_USER == 1)
         <li class="nav-item dropdown-hover d-none d-lg-block">
             <a class="nav-link" href="/dashboard">Dashboard Admin</a>
-          </li>
+        </li>
         @endif
+        <li class="nav-item dropdown-hover d-none d-lg-block">
+            <a class="nav-link" href="/purchased-tickets">My Ticket</a>
+        </li>
       </ul>
 
       <div class="d-block d-lg-none">

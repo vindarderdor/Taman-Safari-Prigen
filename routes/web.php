@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\PurchasedTicketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\ManagementController;use App\Http\Controllers\ContentController;
+use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\testcontroller;
+use App\Models\PurchasedTicket;
 
 //pages
 Route::get('/', [PagesController::class, 'index']);
@@ -89,6 +92,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout/{transaksi}/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/{transaksi}/failed', [CheckoutController::class, 'failed'])->name('checkout.failed');
 
+
+    Route::get('/purchased-tickets', [PurchasedTicketController::class, 'index'])->name('purchased-tickets.index');
+    Route::get('/purchased-tickets/{id}/download', [PurchasedTicketController::class, 'download'])->name('purchased-tickets.download');
+
     // Route::get('/transactions', [TransactionController::class, 'index'])->name("transactions");
 
     //posts
@@ -101,3 +108,10 @@ Route::middleware(['auth'])->group(function () {
     // Route::resource('content', ContentController::class);
 
 });
+Route::get('/ticket/verify/{ticket}', function ($ticket) {
+    $purchasedTicket = PurchasedTicket::where('ticket_number', $ticket)->first();
+    if ($purchasedTicket) {
+        return response()->json(['valid' => true, 'ticket' => $purchasedTicket]);
+    }
+    return response()->json(['valid' => false], 404);
+})->name('ticket.verify');
