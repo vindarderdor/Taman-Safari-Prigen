@@ -16,7 +16,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-header" style="background-color: #90C659; color: white;">
-                            <h5 class="mb-0">{{ $ticket->content->TITLE }}</h5>
+                            {{-- <h5 class="mb-0">{{ $ticket->content->TITLE }}</h5> --}}
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -44,7 +44,9 @@
                             </a>
                         </div>
                         <div class="card-footer text-muted">
-                            <small>Dibeli pada: {{ $ticket->created_at->format('d F Y H:i') }}</small>
+                            {{-- <small>Dibeli pada: {{ $ticket->transaction->created_at->format('d F Y H:i') }}</small> --}}
+                            <br>
+                            <small>Transaction ID: {{ $ticket->transaction_id }}</small>
                         </div>
                     </div>
                 </div>

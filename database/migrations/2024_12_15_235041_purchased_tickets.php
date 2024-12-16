@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('content_id');
-            $table->unsignedBigInteger('transaksi_id')->nullable();
+            $table->uuid('transaksi_id')->nullable();
             $table->string('ticket_type');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);

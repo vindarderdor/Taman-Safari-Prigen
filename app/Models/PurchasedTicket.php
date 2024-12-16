@@ -36,7 +36,7 @@ class PurchasedTicket extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(Transaksi::class);
+        return $this->belongsTo(Transaksi::class, 'transaction_id');
     }
 }
 

@@ -19,7 +19,7 @@ class PurchasedTicketController extends Controller
             ->orderBy('booking_date', 'asc')
             ->get();
 
-            dd($purchasedTickets->whereNull('content'));
+            // dd($purchasedTickets->whereNull('content'));
 
         return view('content.purchased_ticket.index', compact('purchasedTickets'));
     }

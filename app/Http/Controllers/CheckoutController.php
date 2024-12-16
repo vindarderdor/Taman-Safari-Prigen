@@ -51,7 +51,7 @@ class CheckoutController extends Controller
 
         $params = [
             'transaction_details' => [
-                'order_id' => $transaksi->id,
+                'order_id' => $transaksi->id, 
                 'gross_amount' => $totalPrice,
             ],
             'customer_details' => [
@@ -70,7 +70,7 @@ class CheckoutController extends Controller
 
         $snapToken = Snap::getSnapToken($params);
 
-        $transaksi->snap_token = $snapToken;
+        $transaksi->snap_token = (string) $snapToken;
         $transaksi->save();
 
         return redirect()->route('checkout.show', ['transaksi' => $transaksi->id]);

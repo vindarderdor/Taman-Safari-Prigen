@@ -41,13 +41,13 @@
 
         snap.pay('{{ $transaksi->snap_token }}', {
             onSuccess: function(result) {
-                window.location.href = '{{ route("checkout.success", $transaksi->ID_USER) }}';
+                window.location.href = '{{ route("checkout.success", $transaksi->id) }}';
             },
             onPending: function(result) {
                 alert('Payment pending, please complete your payment');
             },
             onError: function(result) {
-                window.location.href = '{{ route("checkout.failed", $transaksi->ID_USER) }}';
+                window.location.href = '{{ route("checkout.failed", $transaksi->id) }}';
             },
             onClose: function() {
                 alert('You closed the payment window without completing the payment');
