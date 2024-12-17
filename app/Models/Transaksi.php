@@ -39,6 +39,6 @@ class Transaksi extends Model
 
     public function cartItems()
     {
-        return $this->hasMany(CartItem::class, 'transaksi_id');
+        return $this->hasMany(CartItem::class, 'transaksi_id', 'id');
     }
 }

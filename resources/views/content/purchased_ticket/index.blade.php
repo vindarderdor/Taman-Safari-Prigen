@@ -16,7 +16,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-header" style="background-color: #90C659; color: white;">
-                            {{-- <h5 class="mb-0">{{ $ticket->content->TITLE }}</h5> --}}
+                            <h5 class="mb-0">{{ $ticket->content->TITLE }}</h5>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -27,7 +27,8 @@
                                 {{ $ticket->booking_date->format('d F Y') }}
                             </div>
                             <div class="mb-3">
-                                <strong>Jumlah:</strong> {{ $ticket->quantity }}
+                                <strong>Jumlah:</strong><br>
+                                {{ $ticket->quantity }}
                             </div>
                             <div class="mb-3">
                                 <strong>Total Harga:</strong><br>
@@ -43,11 +44,11 @@
                                 <i class="fas fa-download me-2"></i> Download Tiket
                             </a>
                         </div>
-                        <div class="card-footer text-muted">
-                            {{-- <small>Dibeli pada: {{ $ticket->transaction->created_at->format('d F Y H:i') }}</small> --}}
+                        {{-- <div class="card-footer text-muted">
+                            <small>Dibeli pada: {{ $ticket->transaction->created_at->format('d F Y H:i') }}</small>
                             <br>
                             <small>Transaction ID: {{ $ticket->transaction_id }}</small>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             @endforeach

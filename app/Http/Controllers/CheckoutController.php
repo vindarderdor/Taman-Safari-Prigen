@@ -34,20 +34,6 @@ class CheckoutController extends Controller
             'status' => 'pending',
         ]);
 
-        foreach ($cartItems as $item) {
-            $ticketNumber = $this->generateTicketNumber($item->content);
-            
-            PurchasedTicket::create([
-                'user_id' => Auth::user()->ID_USER,
-                'content_id' => $item->content_id,
-                'transaksi_id' => $transaksi->id,
-                'ticket_type' => $item->ticket_type,
-                'quantity' => $item->quantity,
-                'price' => $item->price,
-                'booking_date' => $item->booking_date,
-                'ticket_number' => $ticketNumber,
-            ]);
-        }
 
         $params = [
             'transaction_details' => [
@@ -85,29 +71,35 @@ class CheckoutController extends Controller
 
     public function show($id)
     {
+        $cartItems = CartItem::with('content')->get();
         $transaksi = Transaksi::findOrFail($id);
 
-        // dd([
-        //     'transaksi_user_id' => $transaksi->ID_USER,
-        //     'transaksi_id' => $transaksi->id,
-        //     'auth_user_id' => Auth::user()->ID_USER,
-        // ]);
-    
-        // if ($transaksi->ID_USER !== Auth::user()->ID_USER) {
-        //     abort(403);
-        // }
-
-        return view('content.transaksi.show', compact('transaksi'));
+        return view('content.transaksi.show', compact('transaksi', 'cartItems'));
     }
 
     public function success($id)
     {
+        $cartItems = CartItem::where('user_id', Auth::user()->ID_USER)->get();
         $transaksi = Transaksi::findOrFail($id);
 
         // if ($transaksi->ID_USER !== Auth::user()->ID_USER) {
         //     abort(403);
         // }
 
+        foreach ($cartItems as $item) {
+            $ticketNumber = $this->generateTicketNumber($item->content);
+            
+            PurchasedTicket::create([
+                'user_id' => Auth::user()->ID_USER,
+                'content_id' => $item->content_id,
+                'transaksi_id' => $transaksi->id,
+                'ticket_type' => $item->ticket_type,
+                'quantity' => $item->quantity,
+                'price' => $item->price,
+                'booking_date' => $item->booking_date,
+                'ticket_number' => $ticketNumber,
+            ]);
+        }
         $transaksi->status = 'success';
         $transaksi->save();
 

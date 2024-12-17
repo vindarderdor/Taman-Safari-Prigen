@@ -69,26 +69,16 @@
 <body>
     <div class="ticket">
         <div class="ticket-header">
-            <h1>TIKET EXPLORER</h1>
+            <h1>{{ $purchasedTicket->content->TITLE }}</h1>
             <div>This is your ticket</div>
         </div>
         
         <div class="ticket-body">
             <div class="ticket-info">
-                {{-- <div class="info-group">
-                    <h2>Lokasi</h2>
-                    <p>{{ $purchasedTicket->content->LOCATION }}</p>
-                </div> --}}
-                
                 <div class="info-group">
                     <h2>Tanggal Kunjungan</h2>
                     <p>{{ $purchasedTicket->booking_date->format('d F Y') }}</p>
                 </div>
-
-                {{-- <div class="info-group">
-                    <h2>Issued To</h2>
-                    <p>{{ $purchasedTicket->user->NAMA_USER }}</p>
-                </div> --}}
 
                 <div class="info-group">
                     <h2>Ticket Number</h2>
@@ -100,19 +90,19 @@
                     <p>{{ ucfirst($purchasedTicket->ticket_type) }}</p>
                 </div>
 
-                {{-- <div class="info-group">
+                <div class="info-group">
                     <h2>Quantity</h2>
                     <p>{{ $purchasedTicket->quantity }}</p>
-                </div> --}}
+                </div>
             </div>
             
             <div class="ticket-qr">
-                <img src="data:image/png;base64,{{ $qrCode }}" width="200">
+                <img src="data:image/png;base64,{{ $qrCode }}" width="200" alt="QR Code">
             </div>
         </div>
         
         <div class="ticket-footer">
-            &copy; {{ date('Y') }} KELOMPOK 1. All Rights Reserved.
+            &copy; {{ date('Y') }} {{ config('app.name') }}. All Rights Reserved.
         </div>
     </div>
 </body>
