@@ -35,6 +35,7 @@
             padding: 30px;
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
         }
         .ticket-info {
             flex: 1;
@@ -69,7 +70,7 @@
 <body>
     <div class="ticket">
         <div class="ticket-header">
-            <h1>TIKET EXPLORER</h1>
+            <h1>{{ $purchasedTicket->content->TITLE }}</h1>
             <div>This is your ticket</div>
         </div>
         
@@ -100,19 +101,20 @@
                     <p>{{ ucfirst($purchasedTicket->ticket_type) }}</p>
                 </div>
 
-                {{-- <div class="info-group">
+                <div class="info-group">
                     <h2>Quantity</h2>
                     <p>{{ $purchasedTicket->quantity }}</p>
-                </div> --}}
+                </div>
             </div>
             
             <div class="ticket-qr">
                 <img src="data:image/png;base64,{{ $qrCode }}" width="200">
+                <p>Scan to confirm ticket</p>
             </div>
         </div>
         
         <div class="ticket-footer">
-            &copy; {{ date('Y') }} KELOMPOK 1. All Rights Reserved.
+            &copy; {{ date('Y') }} {{ config('app.name') }}. All Rights Reserved.
         </div>
     </div>
 </body>

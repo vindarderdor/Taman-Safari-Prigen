@@ -27,7 +27,8 @@
                                 {{ $ticket->booking_date->format('d F Y') }}
                             </div>
                             <div class="mb-3">
-                                <strong>Jumlah:</strong> {{ $ticket->quantity }}
+                                <strong>Jumlah:</strong><br>
+                                {{ $ticket->quantity }}
                             </div>
                             <div class="mb-3">
                                 <strong>Total Harga:</strong><br>
@@ -43,9 +44,11 @@
                                 <i class="fas fa-download me-2"></i> Download Tiket
                             </a>
                         </div>
-                        <div class="card-footer text-muted">
-                            <small>Dibeli pada: {{ $ticket->created_at->format('d F Y H:i') }}</small>
-                        </div>
+                        {{-- <div class="card-footer text-muted">
+                            <small>Dibeli pada: {{ $ticket->transaction->created_at->format('d F Y H:i') }}</small>
+                            <br>
+                            <small>Transaction ID: {{ $ticket->transaction_id }}</small>
+                        </div> --}}
                     </div>
                 </div>
             @endforeach

@@ -12,12 +12,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('content_id');
-            $table->unsignedBigInteger('transaksi_id')->nullable();
+            $table->uuid('transaksi_id')->nullable();
             $table->string('ticket_type');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->date('booking_date');
             $table->string('ticket_number')->unique();
+            $table->enum('status', ['unused', 'used'])->default('unused');
             $table->timestamps();
             
             $table->foreign('user_id')

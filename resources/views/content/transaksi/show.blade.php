@@ -7,11 +7,22 @@
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Order Summary</h5>
-                    @foreach($transaksi->cartItems as $item)
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>{{ $item->content->TITLE }} ({{ ucfirst($item->ticket_type) }}) x {{ $item->quantity }}</span>
-                            <span>Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</span>
+                    <h4 style="font-family: 'Mikado', sans-serif; color: #274E13; margin-bottom: 20px;">Order Summary</h4>
+                    @php
+                        $groupedItems = $cartItems->groupBy('content_id');
+                    @endphp
+                    @foreach($groupedItems as $contentId => $items)
+                        <div class="mb-3">
+                            <h5 style="color: #274E13;">{{ $items->first()->content->TITLE }}</h5>
+                            @foreach($items as $item)
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>
+                                        {{ $item->ticket_type === 'adult' ? 'Dewasa' : 'Anak-anak' }} 
+                                        (x{{ $item->quantity }})
+                                    </span>
+                                    <span>Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</span>
+                                </div>
+                            @endforeach
                         </div>
                     @endforeach
                     <hr>
@@ -41,13 +52,13 @@
 
         snap.pay('{{ $transaksi->snap_token }}', {
             onSuccess: function(result) {
-                window.location.href = '{{ route("checkout.success", $transaksi->ID_USER) }}';
+                window.location.href = '{{ route("checkout.success", $transaksi->id) }}';
             },
             onPending: function(result) {
                 alert('Payment pending, please complete your payment');
             },
             onError: function(result) {
-                window.location.href = '{{ route("checkout.failed", $transaksi->ID_USER) }}';
+                window.location.href = '{{ route("checkout.failed", $transaksi->id) }}';
             },
             onClose: function() {
                 alert('You closed the payment window without completing the payment');

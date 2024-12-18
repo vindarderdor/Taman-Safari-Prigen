@@ -18,6 +18,7 @@ class PurchasedTicket extends Model
         'price',
         'booking_date',
         'ticket_number',
+        'status',
     ];
 
     protected $casts = [
@@ -31,12 +32,12 @@ class PurchasedTicket extends Model
 
     public function content()
     {
-        return $this->belongsTo(Content::class);
+        return $this->belongsTo(Content::class, 'content_id', 'ID_KONTEN');
     }
 
     public function transaction()
     {
-        return $this->belongsTo(Transaksi::class);
+        return $this->belongsTo(Transaksi::class, 'transaction_id');
     }
 }
 
