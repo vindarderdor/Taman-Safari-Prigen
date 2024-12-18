@@ -35,6 +35,7 @@
             padding: 30px;
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
         }
         .ticket-info {
             flex: 1;
@@ -75,10 +76,20 @@
         
         <div class="ticket-body">
             <div class="ticket-info">
+                {{-- <div class="info-group">
+                    <h2>Lokasi</h2>
+                    <p>{{ $purchasedTicket->content->LOCATION }}</p>
+                </div> --}}
+                
                 <div class="info-group">
                     <h2>Tanggal Kunjungan</h2>
                     <p>{{ $purchasedTicket->booking_date->format('d F Y') }}</p>
                 </div>
+
+                {{-- <div class="info-group">
+                    <h2>Issued To</h2>
+                    <p>{{ $purchasedTicket->user->NAMA_USER }}</p>
+                </div> --}}
 
                 <div class="info-group">
                     <h2>Ticket Number</h2>
@@ -97,7 +108,8 @@
             </div>
             
             <div class="ticket-qr">
-                <img src="data:image/png;base64,{{ $qrCode }}" width="200" alt="QR Code">
+                <img src="data:image/png;base64,{{ $qrCode }}" width="200">
+                <p>Scan to confirm ticket</p>
             </div>
         </div>
         

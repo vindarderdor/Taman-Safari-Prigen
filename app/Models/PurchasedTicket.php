@@ -18,6 +18,7 @@ class PurchasedTicket extends Model
         'price',
         'booking_date',
         'ticket_number',
+        'status',
     ];
 
     protected $casts = [

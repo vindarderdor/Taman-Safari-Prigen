@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->date('booking_date');
             $table->string('ticket_number')->unique();
+            $table->enum('status', ['unused', 'used'])->default('unused');
             $table->timestamps();
             
             $table->foreign('user_id')

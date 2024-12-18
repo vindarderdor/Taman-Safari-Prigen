@@ -19,8 +19,6 @@ class PurchasedTicketController extends Controller
             ->orderBy('booking_date', 'asc')
             ->get();
 
-            // dd($purchasedTickets->whereNull('content'));
-
         return view('content.purchased_ticket.index', compact('purchasedTickets'));
     }
 
@@ -30,9 +28,10 @@ class PurchasedTicketController extends Controller
             ->with(['content', 'transaction', 'user'])
             ->findOrFail($id);
 
+        $confirmationUrl = route('ticket.confirm', ['ticket' => $purchasedTicket->ticket_number]);
         $qrCode = base64_encode(QrCode::format('png')
             ->size(300)
-            ->generate(route('ticket.verify', ['ticket' => $purchasedTicket->ticket_number])));
+            ->generate($confirmationUrl));
 
         $pdf = PDF::loadView('content.purchased_ticket.pdf', compact('purchasedTicket', 'qrCode'));
         
