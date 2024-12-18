@@ -1,8 +1,8 @@
 /********** Template CSS **********/
 :root {
-    --primary: #2EB872;
-    --light: #F3F4F5;
-    --dark: #282F34;
+    --primary: #90C659;
+    --light: #FFFFFF;
+    --dark: #274E13;
 }
 
 .back-to-top {
@@ -38,6 +38,7 @@
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
+    background-color: #274E13;
 }
 
 .btn-square {
@@ -600,12 +601,12 @@
   
   .btn-login:hover {
     background-color: white;
-    color: #2EB872;
+    color: #90C659;
   }
   
   .btn-register {
     background-color: #a5d6a7; /* Hijau muda */
-    color: #2EB872;
+    color: #90C659;
     border: none;
     height: 10px;
   }
@@ -624,3 +625,88 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     height: 10px;
   }
+
+/* Background konsisten antara topbar dan navbar */
+.top-bar {
+    height: 25px; /* Tinggi lebih kecil */
+    line-height: 25px; /* Vertikal rata tengah */
+    font-size: 14px; /* Ukuran font lebih kecil */
+    background-color: #ffffff; /* Warna background sama dengan navbar */
+    z-index: 1050; /* Tetap di atas elemen lainnya */
+    position: relative;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1100; /* Pastikan elemen ini berada di atas */
+}
+
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .top-bar {
+        height: 25px; /* Tinggi lebih kecil untuk layar kecil */
+        font-size: 12px; /* Font lebih kecil */
+    }
+
+    .top-bar .btn {
+        font-size: 12px;
+        padding: 0.2rem 0.5rem; /* Padding lebih kecil */
+    }
+} 
+
+/* Styling Navbar */
+.navbar {
+    height: 60px; /* Tinggi navbar */
+    line-height: 60px; /* Menjaga konten navbar tetap rata tengah */
+    background-color: #ffffff; /* Pastikan warna latar tetap konsisten */
+}
+
+/* Styling untuk menjaga padding konten dalam navbar */
+.navbar .navbar-brand img {
+    max-height: 45px; /* Menyesuaikan tinggi logo agar tidak melebihi navbar */
+}
+
+.navbar .navbar-nav .nav-link {
+    line-height: 90px; /* Agar item navigasi sejajar secara vertikal */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto; /* Tinggi dinamis untuk layar kecil */
+        line-height: normal;
+        padding: 10px 0; /* Tambahkan padding untuk tata letak yang lebih nyaman */
+    }
+    .navbar .navbar-nav .nav-link {
+        line-height: normal; /* Menyesuaikan vertikal pada layar kecil */
+    }
+}
+
+
+.page-wrapper .body-wrapper > .container-fluid,
+.page-wrapper .body-wrapper > .container-sm,
+.page-wrapper .body-wrapper > .container-md,
+.page-wrapper .body-wrapper > .container-lg,
+.page-wrapper .body-wrapper > .container-xl,
+.page-wrapper .body-wrapper > .container-xxl {
+  transition: 0.2s ease-in;
+}
+
+.body-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+.body-wrapper > .container-fluid,
+.body-wrapper > .container-sm,
+.body-wrapper > .container-md,
+.body-wrapper > .container-lg,
+.body-wrapper > .container-xl,
+.body-wrapper > .container-xxl {
+  margin-bottom: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  transition: 0.2s ease-in;
+}
+

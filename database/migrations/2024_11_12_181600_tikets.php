@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('JUMLAH');
             $table->decimal('TOTAL_HARGA', 10, 2);
             $table->enum('payment_status', ['pending', 'paid', 'cancelled'])->default('pending');
+            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }
