@@ -41,7 +41,7 @@
     <nav class="navbar navbar-expand-lg p-0">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="/landing-page">
+          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="/">
             <div class="nav-icon-hover-bg rounded-circle ">
               <iconify-icon icon="solar:backspace-line-duotone" class="fs-7 text-dark"></iconify-icon>
             </div>
@@ -96,8 +96,11 @@
         @if (auth()->user()->ID_JENIS_USER == 1)
         <li class="nav-item dropdown-hover d-none d-lg-block">
             <a class="nav-link" href="/dashboard">Dashboard Admin</a>
-          </li>
+        </li>
         @endif
+        <li class="nav-item dropdown-hover d-none d-lg-block">
+            <a class="nav-link" href="/purchased-tickets">My Ticket</a>
+        </li>
       </ul>
 
       <div class="d-block d-lg-none">
@@ -127,16 +130,17 @@
             <!-- start notification Dropdown -->
             <!-- ------------------------------- -->
             <li class="nav-item dropdown">
-              <a class="nav-link position-relative nav-icon-hover" href="javascript:void(0)" id="drop2"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="nav-icon-hover-bg rounded-circle ">
-                  <iconify-icon icon="bi:cart"></iconify-icon>
+              <a class="nav-link position-relative nav-icon-hover" href="{{ route('cart.index') }}">
+                <div class="nav-icon-hover-bg rounded-circle">
+                    <iconify-icon icon="bi:cart"></iconify-icon>
                 </div>
                 <div class="pulse">
-                  <span class="heartbit border-success"></span>
-                  <span class="point text-bg-success"></span>
+                    <span class="heartbit border-success"></span>
+                    <span class="point text-bg-success">
+                        {{ Session::has('cart') ? count(Session::get('cart')) : 0 }}
+                    </span>
                 </div>
-              </a>
+            </a>
               {{-- <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                 <div class="d-flex align-items-center px-7 py-3">
       <h3 class="mb-0 fs-5">Notifications</h3>
@@ -759,6 +763,7 @@ aria-labelledby="offcanvasExampleLabel">
 </div>
   <div class="dark-transparent sidebartoggler"></div>
 </div>
+@yield('scripts')
 <script src="{{ asset('') }}assets/js/vendor.min.js"></script>
 <!-- Import Js Files -->
 <script src="{{ asset('') }}assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

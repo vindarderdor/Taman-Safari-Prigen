@@ -6,6 +6,7 @@ use App\Models\OrderTiket;
 use App\Models\Midtrans;
 use Illuminate\Http\Request;
 use Midtrans\Snap;
+use App\Models\Ticket;
 
 class TicketController extends Controller
 {
@@ -140,5 +141,11 @@ class TicketController extends Controller
     public function cancel()
     {
         return view('tickets.cancel');
+    }
+
+    public function show($id)
+    {
+        $ticket = Ticket::findOrFail($id); // Cari tiket berdasarkan ID
+        return view('content.pesan.detail', compact('ticket'));
     }
 }

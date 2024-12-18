@@ -18,7 +18,8 @@ class OrderTiket extends Model
         'ID_JADWAL',
         'JUMLAH',
         'TOTAL_HARGA',
-        'payment_status'
+        'payment_status',
+        'snap_token'
     ];
 
     public function user()
@@ -29,5 +30,10 @@ class OrderTiket extends Model
     public function jadwal()
     {
         return $this->belongsTo(Jadwal::class, 'ID_JADWAL');
+    }
+
+    public function content()
+    {
+        return $this->belongsTo(Content::class, 'ID_TIKET', 'ID_KONTEN');
     }
 }

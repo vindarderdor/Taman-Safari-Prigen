@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'SENDER', 'ID_USER');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaksi::class, 'ID_USER', 'ID_USER');
+    }
 }

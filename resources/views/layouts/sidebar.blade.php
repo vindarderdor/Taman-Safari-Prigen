@@ -1,6 +1,6 @@
 <aside class="left-sidebar with-vertical">
     <div class="brand-logo d-flex align-items-center justify-content-between">
-        <a href="/landing-page" class="text-nowrap logo-img">
+        <a href="/" class="text-nowrap logo-img">
           <img src="{{ asset('') }}assets/images/logos/logo-light.svg" class="dark-logo" alt="Logo-Dark" />
           <img src="{{ asset('') }}assets/images/logos/logo-dark.svg" class="light-logo" alt="Logo-light" />
         </a>
