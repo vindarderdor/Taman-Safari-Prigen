@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PagesController;
@@ -95,12 +96,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout/{transaksi}/failed', [CheckoutController::class, 'failed'])->name('checkout.failed');
 
 
+    Route::get('/tickets', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/purchased-tickets', [PurchasedTicketController::class, 'index'])->name('purchased-tickets.index');
     Route::get('/purchased-tickets/{id}/download', [PurchasedTicketController::class, 'download'])->name('purchased-tickets.download');
-
-    Route::get('/qr-scanner', [QrScannerController::class, 'index'])->name('qr-scanner.index');
-    Route::post('/qr-scanner/verify', [QrScannerController::class, 'verify'])->name('qr-scanner.verify');
-    Route::post('/qr-scanner/upload-pdf', [QrScannerController::class, 'uploadPdf'])->name('qr-scanner.upload-pdf');
     // Route::get('/transactions', [TransactionController::class, 'index'])->name("transactions");
 
     //posts
@@ -113,13 +111,6 @@ Route::middleware(['auth'])->group(function () {
     // Route::resource('content', ContentController::class);
 
 });
-// Route::get('/ticket/verify/{ticket}', function ($ticket) {
-//     $purchasedTicket = PurchasedTicket::where('ticket_number', $ticket)->first();
-//     if ($purchasedTicket) {
-//         return response()->json(['valid' => true, 'ticket' => $purchasedTicket]);
-//     }
-//     return response()->json(['valid' => false], 404);
-// })->name('ticket.verify');
 
 Route::get('/ticket/confirm/{ticket}', [TicketConfirmationController::class, 'show'])->name('ticket.confirm');
 Route::post('/ticket/confirm/{ticket}', [TicketConfirmationController::class, 'confirm'])->name('ticket.confirm.post');
